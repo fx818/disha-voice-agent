@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Disha Flow</title>
+<style>
+/* One dark "control room" view: the system map on the left plays one call step by step, the panel on the right explains the step */
+:root{--bg:#0f1222;--bg2:#0f1222;--panel:rgba(255,255,255,.035);--line:rgba(255,255,255,.12);--fg:#e8ebff;--mute:#9aa3c7;
+--accent:#9b8cff;--local:#4fd1c1;--samvaad:#9b8cff;--jev:#f5b453;--hot:#ffffff;--mono:ui-monospace,SFMono-Regular,Menlo,monospace;color-scheme:dark}
+*{box-sizing:border-box}html,body{height:100%}
+body{margin:0;font:14px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--fg);
+  background:radial-gradient(1100px 600px at 18% 0%,rgba(110,95,240,.18),transparent 62%),radial-gradient(900px 500px at 100% 100%,rgba(40,140,190,.12),transparent 60%),#0f1222}
+.app{display:grid;grid-template-rows:auto 1fr auto;height:100%;padding:14px 18px;gap:12px}
+.top{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.top h1{margin:0;font-size:20px;letter-spacing:.01em}.top .sub{color:var(--mute);font-size:13px}
+.ctl{margin-left:auto;display:flex;gap:8px;align-items:center}
+button{font:inherit;color:var(--fg);background:rgba(255,255,255,.08);border:1px solid var(--line);border-radius:9px;padding:7px 13px;cursor:pointer}
+button:hover{border-color:#9fb4ff}button:focus-visible{outline:2px solid #9fb4ff;outline-offset:2px}
+button.pri{background:#5b4ee0;border-color:#6d61f0}
+.speed{color:var(--mute);font-size:12px}
+.main{display:grid;grid-template-columns:minmax(0,2fr) minmax(300px,1fr);gap:14px;min-height:0}
+.map{background:var(--panel);border:1px solid rgba(155,140,255,.45);border-radius:16px;padding:4px;min-height:0;display:flex;align-items:center;overflow:auto}
+.map svg{width:100%;height:100%;min-width:640px;max-height:100%}
+.zone{stroke-width:1.6;stroke-opacity:.7}.z-l{fill:rgba(79,209,193,.07);stroke:#4fd1c1}.z-s{fill:rgba(155,140,255,.08);stroke:#9b8cff}.z-j{fill:rgba(245,180,83,.07);stroke:#f5b453}
+.zt{font:700 12px var(--mono);letter-spacing:.12em}
+.node rect{fill:color-mix(in srgb,var(--c) 7%,#161a30);stroke:var(--c);stroke-opacity:.75;stroke-width:1.6;transition:stroke .4s,fill .4s,opacity .4s}
+.node text{transition:opacity .4s}.node .t{fill:var(--fg);font:600 14px system-ui}.node .s{fill:var(--mute);font:11.5px system-ui}
+.node.dim{opacity:.72}
+.node.on rect{stroke:var(--c);stroke-opacity:1;stroke-width:2.4;fill:color-mix(in srgb,var(--c) 16%,#1c2140);filter:drop-shadow(0 0 10px var(--c))}
+.chipn rect{fill:color-mix(in srgb,var(--c) 10%,#121629)}.chipn .t{font:600 11.5px var(--mono)}
+.edge{fill:none;stroke:rgba(255,255,255,.18);stroke-width:1.6;transition:stroke .4s,opacity .4s}
+.edge.on{stroke:var(--c);stroke-width:2.2;stroke-dasharray:7 6;animation:dash .9s linear infinite}
+.edge.dim{opacity:.35}
+@keyframes dash{to{stroke-dashoffset:-13}}
+.pkt circle{filter:drop-shadow(0 0 5px currentColor)}
+.pkt text{font:600 11px var(--mono);fill:#fff;paint-order:stroke;stroke:#0f1222;stroke-width:4px}
+.side{background:var(--panel);border:1px solid rgba(155,140,255,.45);box-shadow:inset 0 3px 0 rgba(155,140,255,.55);border-radius:16px;padding:18px 20px;overflow:auto;min-height:0;display:flex;flex-direction:column;gap:12px}
+.where{display:flex;gap:6px;flex-wrap:wrap}
+.lane{display:inline-flex;align-items:center;gap:6px;font:600 11px var(--mono);letter-spacing:.06em;padding:3px 9px;border-radius:999px;border:1px solid currentColor}
+.lane i{width:7px;height:7px;border-radius:50%;background:currentColor}
+.l-local{color:var(--local)}.l-samvaad{color:var(--samvaad)}.l-jev{color:var(--jev)}
+.stepno{font:600 12px var(--mono);color:var(--mute);letter-spacing:.08em}
+.side h2{margin:0;font-size:22px;line-height:1.2;text-wrap:balance}
+.side p{margin:0;color:#cfd4f5}
+.side h4{margin:4px 0 0;font:600 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.side ul{margin:0;padding-left:18px;color:#cfd4f5}.side li{margin:3px 0}
+pre{margin:0;font:12px/1.5 var(--mono);background:rgba(0,0,0,.28);border:1px solid var(--line);border-radius:10px;padding:10px 12px;white-space:pre-wrap;word-break:break-word;color:#dfe3ff}
+.clock{display:flex;align-items:center;gap:8px;font:600 12px var(--mono);color:var(--mute)}
+.clock b{color:var(--fg);font-size:13px}
+.anim{animation:in .45s ease}@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.rail{display:flex;gap:6px;align-items:stretch;overflow-x:auto;padding-bottom:2px}
+.rs{flex:1 0 96px;text-align:left;padding:8px 10px;border-radius:10px;background:color-mix(in srgb,var(--c) 6%,transparent);border:1px solid color-mix(in srgb,var(--c) 55%,transparent);position:relative;overflow:hidden}
+.rs small{display:block;font:600 10px var(--mono);letter-spacing:.08em;color:var(--mute)}
+.rs span{font-size:12.5px;line-height:1.25;display:block}
+.rs .pb{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--c)}
+.rs.done .pb{width:100%}.rs.cur{border-color:var(--c);background:color-mix(in srgb,var(--c) 16%,transparent);box-shadow:inset 0 -2px 0 var(--c)}
+.bubble{font:12px system-ui}
+body.embedded .ctl{margin-right:96px}
+@media (max-width:980px){.main{grid-template-columns:1fr}.map{min-height:420px}}
+@media (prefers-reduced-motion:reduce){.edge.on{animation:none}.anim{animation:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="top">
+    <div><h1>How a Disha call works</h1><div class="sub">One call, from the seller's data to the call outcome. Each step lights up what runs and moves the data it sends.</div></div>
+    <div class="ctl"><button id="prev" aria-label="Previous step">◀</button><button class="pri" id="play">❚❚ Pause</button><button id="next" aria-label="Next step">▶</button>
+      <button id="spd" class="speed" title="Playback speed">1×</button></div>
+  </div>
+  <div class="main">
+    <div class="map">
+      <svg id="svg" viewBox="10 14 980 538" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Disha system map">
+        <rect class="zone z-l" x="16" y="20" width="262" height="526" rx="16"/>
+        <rect class="zone z-s" x="296" y="20" width="456" height="526" rx="16"/>
+        <rect class="zone z-j" x="770" y="20" width="214" height="526" rx="16"/>
+        <text class="zt" x="34" y="48" fill="#4fd1c1">LOCAL MACHINE</text>
+        <text class="zt" x="314" y="48" fill="#9b8cff">SAMVAAD</text>
+        <text class="zt" x="788" y="48" fill="#f5b453">JEV · TYPESAFE</text>
+        <g id="edges"></g><g id="nodes"></g><g id="pkts"></g>
+      </svg>
+    </div>
+    <div class="side" id="side"></div>
+  </div>
+  <div class="rail" id="rail"></div>
+</div>
+<script>
+if(window.top!==window)document.body.classList.add('embedded');
+const COL={local:'#4fd1c1',samvaad:'#9b8cff',jev:'#f5b453'};
+const NODES=[
+ {id:'data',x:36,y:76,w:222,h:58,t:'PS07 seller data',s:'profiles, engagement, bot calls',lane:'local'},
+ {id:'seg',x:36,y:170,w:222,h:58,t:'Segmentation',s:'contact gate + call purpose',lane:'local'},
+ {id:'prof',x:36,y:264,w:222,h:58,t:'seller_profile JSON',s:'gen · jev · rules (~3 KB)',lane:'local'},
+ {id:'console',x:36,y:372,w:222,h:84,t:'Disha Console',s:'browser call · phone call',s2:'live view · output · insights',lane:'local'},
+ {id:'learn',x:36,y:478,w:222,h:54,t:'Fix loop memory',s:'per-seller fixes · approved rules',lane:'local'},
+ {id:'onstart',x:316,y:70,w:416,h:72,t:'OnStart code tool',s:'gate → Jev → persona → learned fixes → opening',lane:'samvaad'},
+ {id:'agent',x:316,y:186,w:416,h:132,t:'Disha voice agent',s:'Paayal call flow + persona variables',lane:'samvaad'},
+ {id:'t_switch',x:332,y:270,w:124,h:32,t:'persona_switch',lane:'samvaad',chip:1},
+ {id:'t_lang',x:464,y:270,w:118,h:32,t:'language',lane:'samvaad',chip:1},
+ {id:'t_end',x:590,y:270,w:126,h:32,t:'end_interaction',lane:'samvaad',chip:1},
+ {id:'onend',x:316,y:364,w:416,h:64,t:'OnEnd code tool',s:'switch log → Jev check + call review',lane:'samvaad'},
+ {id:'analytics',x:316,y:470,w:416,h:56,t:'Analytics API',s:'interaction variables + transcript',lane:'samvaad'},
+ {id:'jevcat',x:788,y:70,w:178,h:72,t:'Jev · categorise',s:'4 probabilities + catalog',lane:'jev'},
+ {id:'jevver',x:788,y:364,w:178,h:64,t:'Jev · verify + review',s:'switches · was Call 1 right?',lane:'jev'},
+];
+const EDGES={
+ data_seg:'M147 134V170', seg_prof:'M147 228V264', prof_console:'M147 322V372',
+ console_onstart:'M258 392C300 392 280 106 316 106', onstart_jev:'M732 96H788', jev_onstart:'M788 120H732',
+ onstart_agent:'M524 142V186', audio:'M258 430C300 430 280 230 316 230', agent_switch:'M394 250V270',
+ agent_onend:'M524 318V364', onend_jev:'M732 386H788', jev_onend:'M788 408H732', onend_analytics:'M524 428V470',
+ analytics_console:'M316 498C282 498 290 446 258 444', console_learn:'M147 456V478',
+ learn_onstart:'M258 500C306 500 292 132 316 132',
+};
+const STEPS=[
+ {lane:['local'],title:'Segment every seller',clock:'before any call',nodes:['data','seg'],pk:[['data_seg','seller rows']],
+  text:'The three PS07 datasets are joined per seller. A contact gate runs first, then the call purpose is chosen by priority.',
+  list:['Gate: SUPPRESS 4,457 · ROUTE_TO_HUMAN 4,726 · COOL_OFF 17,929','Purpose: warm follow-up › lead engagement › free to paid › reactivation › profile › discovery','Jev matched these rules 70% on a September holdout (κ 0.64)'],
+  code:'outputs/segmentation/seller_use_case.csv'},
+ {lane:['local'],title:'Build the seller_profile',clock:'before any call',nodes:['seg','prof'],pk:[['seg_prof','profile JSON']],
+  text:'Each seller becomes one compact JSON string. It is the only data that will be sent to Samvaad.',
+  list:['gen: inputs for the persona generator','jev: the state Jev reasons over (catalog, demand, call history)','rules: use case, contact policy, gate reason','overrides (optional): fixes learned from earlier calls','contact (optional): seller name and phone'],
+  code:'{"v":1,"seller_id":…,\n "gen":{…},"jev":{…},\n "rules":{"use_case":"free_to_paid",\n          "contact_policy":"OK_TO_CALL"},\n "overrides":{…}}   ← from the fix loop'},
+ {lane:['local','samvaad'],title:'Start the call from the console',clock:'t = 0 s',nodes:['prof','console','onstart'],pk:[['prof_console','profile'],['console_onstart','seller_profile']],
+  text:'Pick a seller and press a call button. The console sends the profile as Disha\'s only per-call variable.',
+  list:['The console adds this seller\'s learned fixes and any approved rules (a tick box turns them off)','Browser call: Samvaad SDK websocket from the console','Phone call: Samvaad test call to the verified number'],
+  code:'agent_variables = {\n  "seller_profile": "<the JSON>"\n}'},
+ {lane:['samvaad'],title:'OnStart: contact gate',clock:'t ≈ 0.0 s',nodes:['onstart'],pk:[],
+  text:'Before Disha says a word, the OnStart code tool checks the contact policy. A blocked seller never hears a pitch.',
+  list:['SUPPRESS or ROUTE_TO_HUMAN: no pitch, apologise and close','COOL_OFF: one soft ask only','OK_TO_CALL: continue'],
+  code:'Contact policy: OK_TO_CALL → full flow'},
+ {lane:['samvaad','jev'],title:'OnStart asks Jev to categorise',clock:'t ≈ 0.1 – 0.7 s',nodes:['onstart','jevcat'],pk:[['onstart_jev','state + questions'],['jev_onstart','probabilities']],
+  text:'Jev answers four probability questions and one catalog score about this seller, with a 1.5 s deadline.',
+  list:['First signal at or above 0.5 picks the call purpose','Within 0.05 of a cut-off: the rules decide','Agreement with the rules sets the confidence','Jev slow or down: the rules label is used'],
+  code:'pending_commitment  0.11\nignores_leads       0.07\nupgrade_intent      0.61  ← free_to_paid\ninactive_business   0.12\ncatalog_need        1.05 / 3\nconfidence: high (rules agree)'},
+ {lane:['samvaad'],title:'OnStart builds the persona',clock:'t ≈ 0.7 s',nodes:['onstart','agent'],pk:[['onstart_agent','variables · opening · pace']],
+  text:'The persona generator turns the seller\'s history into delivery choices, adjusted for the call purpose. Fixes learned from earlier calls are applied on top. OnStart then sets the opening line, start language and pace. The voice stays the platform voice.',
+  list:['use_case, use_case_confidence, use_case_reason','persona_style, seller_history, persona_notes, persona_spec','Nudge budget 0–2 from past calls: warm follow-up and free to paid 2, profile 1, lead engagement and reactivation 0','Learned fixes: start language, pace, simpler wording, notes, purpose, a lower nudge budget','OnStart remembers what it decided (Call 1) so the call can be reviewed later'],
+  code:'opening : "Namaste, main Disha bol rahi\n           hoon IndiaMART se. … se baat\n           ho rahi hai?"\nlanguage: Hindi   pace: 1.40   style: brief_direct'},
+ {lane:['local','samvaad'],title:'The conversation',clock:'t = 1 s onward',nodes:['console','agent'],pk:[['audio','seller audio'],['audio','Disha audio',1]],
+  text:'Disha follows Paayal\'s call flow with the persona variables injected: confirm the seller, give the reason, offer a free executive visit, fix a slot.',
+  list:['Audio streams both ways in real time','The console shows live captions and who is speaking','Dates come from call_calendar, never guessed'],
+  code:'Disha : …executive aapse milna chahte hain.\n        Kal 11 baje ya shaam 4 baje?\nSeller: Jaldi bolo, main busy hoon.'},
+ {lane:['samvaad'],title:'A live signal: persona_switch',clock:'t ≈ 38 s',nodes:['agent','t_switch','t_lang'],pk:[['agent_switch','rush']],
+  text:'On every seller turn Disha checks for five signals and a bot question. On a hit she calls persona_switch first, then replies in the new style. A language change also switches her speaking language.',
+  list:['Rush: one-line turns, straight to the slot','Confusion: simpler and slower','Frustration: no persuasion, one easy step','Interest: acknowledge, go to scheduling','Language: follow the seller\'s latest language'],
+  code:'{"t_sec": 38.2, "signal": "rush",\n "seller_words": "Jaldi bolo, main busy hoon",\n "change": "one-line turns, offer two slots",\n "reason": "seller is short on time"}'},
+ {lane:['samvaad'],title:'The call ends',clock:'t = end',nodes:['agent','t_end','onend'],pk:[['agent_onend','transcript + switches']],
+  text:'Disha closes with end_interaction. The platform hands the full transcript and the switches to the OnEnd code tool, which writes the switch log first so it always exists.',
+  list:['disposition, call_summary, meeting date and time are filled','switch_log_json is written','Next: one Jev request checks the switches and reviews the call'],
+  code:'disposition : callback_requested\nmeeting     : —\nswitches    : 2'},
+ {lane:['samvaad','jev'],title:'OnEnd: Jev checks and reviews the call',clock:'end + ≈ 1 s',nodes:['onend','jevver'],pk:[['onend_jev','transcript + Call 1'],['jev_onend','scores + review']],
+  text:'One Jev request does two jobs. It scores each switch (was the signal there, did Disha act on it), and it reviews the whole call against what Call 1 decided before the first word.',
+  list:['Hindsight purpose vs Call 1\'s purpose','Seller\'s real language, pace and clarity needs','Opening landed? Goal met?','Nudges used vs the budget; pushing that irritated the seller lowers the budget next time','Fixes: auto for safe ones, suggestions for the rest'],
+  code:'Call 1      : warm_followup, English\nhindsight   : profile_onboarding (0.72)\nlanguage    : Hindi (1.00)  confused 0.94\nfixes       : start Hindi [auto]\n              simpler wording [auto]\n              purpose [suggestion: goal met]'},
+ {lane:['samvaad','local'],title:'The console shows the result',clock:'end + ≈ 5 s',nodes:['onend','analytics','console'],pk:[['onend_analytics','outputs'],['analytics_console','transcript · outcome']],
+  text:'The console reads the interaction from Samvaad\'s analytics API: outcome, summary, meeting, the switch timeline with Jev\'s scores and the full transcript. Every call is also saved locally.',
+  list:['Outcome card on the call screen, with a one-line review','Call review card: Call 1 vs hindsight, seller needs, fixes','Saved to outputs/console_runs/'],
+  code:'GET /analytics/…/interactions   (variables,\n                                   call_review)\nGET /analytics/…/transcripts/{id}'},
+ {lane:['local','samvaad'],title:'Fix loop: this seller\'s next call',clock:'next call',nodes:['console','learn','onstart'],pk:[['console_learn','review + fixes'],['learn_onstart','overrides']],
+  text:'Safe fixes are stored for that seller and sent with the next call as an overrides block, which OnStart applies before the first word. The seller page shows them as "Learned from earlier calls".',
+  list:['Automatic: start language, pace, simpler wording, notes','Purpose only when the review is sure and the call missed its goal','Never changed: contact policy and compliance','Example seller: English → Hindi, pace 1.1 → 1.2, simpler wording'],
+  code:'"overrides": {"start_language": "hi-IN",\n              "simpler": true, "pace_delta": 0.1,\n              "why": "call 09/19:00: seller asked for Hindi"}'},
+ {lane:['local','samvaad'],title:'Insights: rules for all sellers',clock:'across calls',nodes:['console','learn','onstart'],pk:[['console_learn','approved rule'],['learn_onstart','overrides (matching sellers)']],
+  text:'Reviews from many calls are grouped into suggested rules. Nothing changes for all sellers until you approve a rule in Insights; then it is added to every matching seller\'s next call. A seller\'s own fixes still win.',
+  list:['Purpose that Call 1 keeps getting wrong','Start language by state','Pace and clarity by call purpose','Each rule shows how many calls back it, and is tagged when there are few'],
+  code:'12 calls reviewed · Call 1 right 6 / 12\n\n"Karnataka sellers preferred Hindi in 2 of 2\n calls. Start in Hindi."         [Approve]\n"Sellers were confused in 6 of 12 calls.\n Use simpler words."             [Approve]'},
+];
+const $=s=>document.querySelector(s), NS='http://www.w3.org/2000/svg';
+const el=(tag,attrs,parent)=>{const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);parent&&parent.appendChild(e);return e};
+const nodeEls={},edgeEls={};
+for(const [id,d] of Object.entries(EDGES))edgeEls[id]=el('path',{d,class:'edge'},$('#edges'));
+for(const n of NODES){const g=el('g',{class:'node'+(n.chip?' chipn':''),style:`--c:${COL[n.lane]}`},$('#nodes'));
+  el('rect',{x:n.x,y:n.y,width:n.w,height:n.h,rx:n.chip?8:12},g);
+  if(n.chip){const t=el('text',{x:n.x+n.w/2,y:n.y+n.h/2+4,class:'t','text-anchor':'middle'},g);t.textContent=n.t}
+  else{const t=el('text',{x:n.x+14,y:n.y+26,class:'t'},g);t.textContent=n.t;
+    if(n.s){const s=el('text',{x:n.x+14,y:n.y+45,class:'s'},g);s.textContent=n.s}
+    if(n.s2){const s=el('text',{x:n.x+14,y:n.y+62,class:'s'},g);s.textContent=n.s2}}
+  nodeEls[n.id]=g}
+// rail
+$('#rail').innerHTML=STEPS.map((s,i)=>`<button class="rs" data-i="${i}" style="--c:${COL[s.lane[s.lane.length-1]]}"><small>${String(i+1).padStart(2,'0')}</small><span>${s.title}</span><i class="pb"></i></button>`).join('');
+document.querySelectorAll('.rs').forEach(b=>b.onclick=()=>go(+b.dataset.i,true));
+
+let cur=0,playing=true,speed=1,stepStart=0,pkts=[];
+const DUR=6500;
+function laneTag(l){return `<span class="lane l-${l}"><i></i>${{local:'Local machine',samvaad:'Samvaad',jev:'Jev · TypeSafe'}[l]}</span>`}
+function go(i,user){
+  cur=(i+STEPS.length)%STEPS.length;const s=STEPS[cur];stepStart=performance.now();
+  const on=new Set(s.nodes),onE=new Set(s.pk.map(p=>p[0]));
+  for(const [id,g] of Object.entries(nodeEls)){g.classList.toggle('on',on.has(id));g.classList.toggle('dim',!on.has(id))}
+  for(const [id,p] of Object.entries(edgeEls)){const hit=onE.has(id);p.classList.toggle('on',hit);p.classList.toggle('dim',!hit);
+    const lane=NODES.find(n=>n.id===s.nodes[s.nodes.length-1])?.lane||'samvaad';p.style.setProperty('--c',COL[s.lane[s.lane.length-1]])}
+  // packets
+  $('#pkts').innerHTML='';pkts=s.pk.map(([eid,label,rev],k)=>{const g=el('g',{class:'pkt',style:`color:${COL[s.lane[Math.min(k,s.lane.length-1)]]}`},$('#pkts'));
+    el('circle',{r:6,fill:'currentColor'},g);const t=el('text',{x:10,y:-9},g);t.textContent=label;
+    const path=edgeEls[eid];return {g,path,len:path.getTotalLength(),rev:!!rev,delay:k*0.55}});
+  $('#side').innerHTML=`<div class="anim" style="display:flex;flex-direction:column;gap:12px">
+    <div class="stepno">STEP ${cur+1} OF ${STEPS.length}</div><div class="where">${s.lane.map(laneTag).join('')}</div>
+    <h2>${s.title}</h2><div class="clock">call clock <b>${s.clock}</b></div><p>${s.text}</p>
+    <h4>Details</h4><ul>${s.list.map(x=>`<li>${x}</li>`).join('')}</ul>
+    <h4>Data</h4><pre>${s.code.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</pre></div>`;
+  document.querySelectorAll('.rs').forEach((b,j)=>{b.classList.toggle('cur',j===cur);b.classList.toggle('done',j<cur);b.querySelector('.pb').style.width=j<cur?'100%':'0'});
+  if(user){document.querySelectorAll('.rs')[cur].scrollIntoView({block:'nearest',inline:'nearest'})}
+}
+function tick(now){
+  requestAnimationFrame(tick);
+  const el_=(now-stepStart)*speed;
+  for(const p of pkts){let f=((el_/1700)-p.delay);if(f<0){p.g.style.opacity=0;continue}f=f%1;
+    const L=p.rev?p.len*(1-f):p.len*f,pt=p.path.getPointAtLength(L);p.g.setAttribute('transform',`translate(${pt.x},${pt.y})`);
+    p.g.style.opacity=f<0.08?f/0.08:f>0.9?(1-f)/0.1:1}
+  const bar=document.querySelectorAll('.rs')[cur]?.querySelector('.pb');
+  if(playing){if(bar)bar.style.width=Math.min(100,100*el_/DUR)+'%';if(el_>=DUR)go(cur+1)}
+}
+function setPlay(v){playing=v;$('#play').textContent=v?'❚❚ Pause':'▶ Play';if(v)stepStart=performance.now()-((document.querySelectorAll('.rs')[cur].querySelector('.pb').style.width.replace('%','')||0)/100*DUR)/speed}
+$('#play').onclick=()=>setPlay(!playing);$('#next').onclick=()=>go(cur+1,true);$('#prev').onclick=()=>go(cur-1,true);
+$('#spd').onclick=()=>{speed=speed===1?1.5:speed===1.5?0.75:1;$('#spd').textContent=speed+'×'};
+document.addEventListener('keydown',e=>{if(e.key===' '){e.preventDefault();setPlay(!playing)}if(e.key==='ArrowRight')go(cur+1,true);if(e.key==='ArrowLeft')go(cur-1,true)});
+const q=new URLSearchParams(location.search);if(q.has('step'))go(+q.get('step')-1);else go(0);
+if(q.get('play')==='0'||matchMedia('(prefers-reduced-motion: reduce)').matches)setPlay(false);
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>

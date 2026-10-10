@@ -1,0 +1,3920 @@
+[
+ {
+  "internal_id": "01a0e8fc-8a76-72d3-ae24-89b4688928eb",
+  "voice_id": "Himanshu-Hindi_Documentary",
+  "display_name": "Anand - Documentary Voice",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Narration"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A clear, low and slow male voice in Hindi."
+ },
+ {
+  "internal_id": "01a0e8fc-9123-73bb-bd4e-04df4741957a",
+  "voice_id": "Prashant_Narula-Companion",
+  "display_name": "Shubh - AI Companion",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "English",
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Companion"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A low and lively male voice in English and Hindi."
+ },
+ {
+  "internal_id": "01a0cf16-a571-7451-a420-be5f97e71f71",
+  "voice_id": "Prashant_Narula-Customer_Care",
+  "display_name": "Shubh - Expressive Banking Agent",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "English",
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A warm, soft-spoken and expressive male voice in English and Hindi. Best for banking and BFSI support calls."
+ },
+ {
+  "internal_id": "01a0cf16-8d27-75e7-a4f8-f71f57f86443",
+  "voice_id": "Anuradha_Shabadi-Hindi_Customer_Care",
+  "display_name": "Aparna - Support Agent",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A warm, low and lively female voice in Hindi. Best for customer support calls."
+ },
+ {
+  "internal_id": "01a0cf16-90ae-7470-941d-2c1f17b37528",
+  "voice_id": "Ayushi_Jain-Hindi_Customer_Care",
+  "display_name": "Aarti - Support Agent",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A sweet, high and soft-spoken female voice in Hindi. Best for customer support calls."
+ },
+ {
+  "internal_id": "01a0e8fc-b042-7326-a139-e97058ab7c50",
+  "voice_id": "Soniya_Mali-Companion",
+  "display_name": "Ishita - AI Companion",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "English",
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Companion"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "An intimate and breathy female voice in English and Hindi."
+ },
+ {
+  "internal_id": "01a0cf16-e8b3-7f97-909b-27be790e7330",
+  "voice_id": "Soniya_Mali-Customer_Care",
+  "display_name": "Ishita - Expressive Support",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "English",
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A slow female voice in English and Hindi. Best for customer support calls."
+ },
+ {
+  "internal_id": "01a0cf16-8c17-7394-a54d-d11431e8a13a",
+  "voice_id": "Anika-Hindi_E_Learning",
+  "display_name": "Ritu - Interactive E-Learning Tutor",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Educational"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "An engaging, high and high-energy female voice in Hindi. Best for e-learning and training material."
+ },
+ {
+  "internal_id": "01a0e8fc-a461-75e4-b7d4-43e84745eee6",
+  "voice_id": "Rutpanna_Aishwarya-Hindi_Social_Media",
+  "display_name": "Sanchita - Hindi Influencer Voice",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Social Media"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A punchy, rough and high female voice in Hindi."
+ },
+ {
+  "internal_id": "01a0cf16-97b2-72b5-bdc4-4785b7a334ed",
+  "voice_id": "Dhruti_Rathode-Hindi_Conversation",
+  "display_name": "Sarika - Conversational Voice",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Conversational"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A friendly, low and soft-spoken female voice in Hindi. Best for natural back-and-forth conversation."
+ },
+ {
+  "internal_id": "01a0e8fc-9b0d-7595-b5b6-4ba0d403c566",
+  "voice_id": "Rinki_Singhvi-Companion",
+  "display_name": "Simran - AI Companion",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "English",
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Companion"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A low and expressive female voice in English and Hindi."
+ },
+ {
+  "internal_id": "01a0cf16-b5cd-7a8b-a0f5-f3889c932e82",
+  "voice_id": "Rinki_Singhvi-Customer_Care",
+  "display_name": "Simran - Expressive Banking Agent",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "English",
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A warm, low and brisk female voice in English and Hindi. Best for banking and BFSI support calls."
+ },
+ {
+  "internal_id": "01a0cf16-92ef-7beb-a599-7def88873140",
+  "voice_id": "Chinku-Hindi_Unspecified",
+  "display_name": "Mohit - Conversational Voice",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Conversational"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A friendly, highly expressive and light male voice in Hindi. Best for natural back-and-forth conversation."
+ },
+ {
+  "internal_id": "01a0cf16-7021-76f7-a0cc-9d065cdb30a8",
+  "voice_id": "Vikram",
+  "display_name": "Aayan",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [
+   "Pro"
+  ],
+  "usecase": [],
+  "tts_model_name": "sarvam-tts-v3.1-rl-hd",
+  "model_name": "Sarvam TTS v3.1",
+  "description": "Aayan's voice is characterized by its warm and natural tone. His speech is clear and engaging, making it easy for listeners to connect and engage with the content."
+ },
+ {
+  "internal_id": "01a0cf17-18ac-7ceb-aac2-5f0c39f86831",
+  "voice_id": "Vikram",
+  "display_name": "Aayan - Conversational Voice",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Conversational"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A friendly, fast and expressive male voice in Hindi. Best for natural back-and-forth conversation."
+ },
+ {
+  "internal_id": "01a0cf16-5726-7055-8622-322e53f6bc77",
+  "voice_id": "Aarush",
+  "display_name": "Aditya",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [
+   "Pro"
+  ],
+  "usecase": [],
+  "tts_model_name": "sarvam-tts-v3.1-rl-hd",
+  "model_name": "Sarvam TTS v3.1",
+  "description": "Aditya's voice is characterized by its warm and natural tone. His speech is clear and engaging, making it easy for listeners to connect and engage with the content."
+ },
+ {
+  "internal_id": "01a0cf16-ffc4-7381-89d8-b12c13ae6cf9",
+  "voice_id": "Aarush",
+  "display_name": "Aditya - Conversational Voice",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Sales"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A persuasive, lively and slow male voice in Hindi. Best for outbound sales and lead qualification."
+ },
+ {
+  "internal_id": "01a0cf16-fd75-7f65-ad57-d0ca08ad4d7a",
+  "voice_id": "Vishal_Menon-Hindi_Sales_Agent",
+  "display_name": "Aditya - Sales Agent",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Sales"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A confident, low and fast male voice in Hindi. Best for outbound sales and lead qualification."
+ },
+ {
+  "internal_id": "01a0cf16-73d4-78aa-a416-c593287484db",
+  "voice_id": "Aditya_Style2",
+  "display_name": "Advait",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [
+   "Pro"
+  ],
+  "usecase": [],
+  "tts_model_name": "sarvam-tts-v3.1-rl-hd",
+  "model_name": "Sarvam TTS v3.1",
+  "description": "Advait's voice is characterized by its warm and natural tone. His speech is clear and engaging, making it easy for listeners to connect and engage with the content."
+ },
+ {
+  "internal_id": "01a0cf16-6001-7fac-b2c3-96de29fc6cd6",
+  "voice_id": "Nikhil",
+  "display_name": "Amit",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [
+   "Pro"
+  ],
+  "usecase": [],
+  "tts_model_name": "sarvam-tts-v3.1-rl-hd",
+  "model_name": "Sarvam TTS v3.1",
+  "description": "Amit's voice is characterized by its warm and natural tone. His speech is clear and engaging, making it easy for listeners to connect and engage with the content."
+ },
+ {
+  "internal_id": "01a0cf17-0934-7c93-9b52-fa62fcbdaa7b",
+  "voice_id": "Nikhil",
+  "display_name": "Amit - Conversational Voice",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Conversational"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A flowing male voice in Hindi. Best for natural back-and-forth conversation."
+ },
+ {
+  "internal_id": "01a0cf16-8e7d-72c5-9a8b-e3c431253630",
+  "voice_id": "Anuradha_Shabadi-Hindi_Video_KYC",
+  "display_name": "Aparna - KYC Agent",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A professional, low and lively female voice in Hindi. Best for video KYC and identity verification."
+ },
+ {
+  "internal_id": "01a0e8fc-b993-7155-b2dd-fc6bb2d661ed",
+  "voice_id": "Umang_Upasham-Hindi_Formal_Ads",
+  "display_name": "Aryaman - Formal Ad Voice",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Advertisement"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A premium, breathy and rough male voice in Hindi."
+ },
+ {
+  "internal_id": "01a0cf16-729b-720b-bf53-1e18c3d5a5da",
+  "voice_id": "Aditya_Style1",
+  "display_name": "Ashutosh",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [
+   "Pro"
+  ],
+  "usecase": [],
+  "tts_model_name": "sarvam-tts-v3.1-rl-hd",
+  "model_name": "Sarvam TTS v3.1",
+  "description": "Ashutosh's voice is characterized by its warm and natural tone. His speech is clear and engaging, making it easy for listeners to connect and engage with the content."
+ },
+ {
+  "internal_id": "01a0cf17-00fc-7b7e-8352-37394d03344d",
+  "voice_id": "Aditya_Style2",
+  "display_name": "Ashutosh - Hindi Conversational Voice",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Conversational"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A brisk, flat and light male voice in Hindi. Best for natural back-and-forth conversation."
+ },
+ {
+  "internal_id": "01a0cf16-955f-71e1-b1b6-68bf2fcf2172",
+  "voice_id": "Deepashree-Kannada_Hindi_Mix_Customer_Care",
+  "display_name": "Chaitra - Kannada Mix Support",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi",
+   "Kannada"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A warm, brisk and deliberate female voice in Hindi and Kannada. Best for customer support calls."
+ },
+ {
+  "internal_id": "01a0e8fc-a66d-788f-b29b-d0cf21dfdeeb",
+  "voice_id": "Sanil-Hindi_Social_Media",
+  "display_name": "Chirag - Influencer Voice",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Social Media"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A viral, very high and slow male voice in Hindi."
+ },
+ {
+  "internal_id": "01a0cf16-655d-78cb-8b68-a000a3e4878e",
+  "voice_id": "Prem_Recovery",
+  "display_name": "Dev",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [
+   "Pro"
+  ],
+  "usecase": [],
+  "tts_model_name": "sarvam-tts-v3.1-rl-hd",
+  "model_name": "Sarvam TTS v3.1",
+  "description": "Dev's voice is characterized by its warm and natural tone. His speech is clear and engaging, making it easy for listeners to connect and engage with the content."
+ },
+ {
+  "internal_id": "01a0cf16-6660-7ec9-9aed-c1f8ba75b896",
+  "voice_id": "Ria_Rao",
+  "display_name": "Ishita",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [
+   "Pro"
+  ],
+  "usecase": [],
+  "tts_model_name": "sarvam-tts-v3.1-rl-hd",
+  "model_name": "Sarvam TTS v3.1",
+  "description": "Ishita's voice is characterized by its warm and natural tone. Her speech is clear and engaging, making it easy for listeners to connect and engage with the content."
+ },
+ {
+  "internal_id": "01a0e8fc-b332-7ea8-9f1d-4f5495aff777",
+  "voice_id": "Soniya_Mali-Hindi_Mythology",
+  "display_name": "Ishita - Devotional Narrator",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Storytelling"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "An epic, rough and low female voice in Hindi."
+ },
+ {
+  "internal_id": "01a0cf16-ecd8-7d99-8aab-265fd11bc871",
+  "voice_id": "Soniya_Mali-Hindi_E_Learning",
+  "display_name": "Ishita - E-Learning Tutor",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Educational"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A clear, slow and expressive female voice in Hindi. Best for e-learning and training material."
+ },
+ {
+  "internal_id": "01a0cf16-b252-7218-996b-1d4902aae830",
+  "voice_id": "Ria_Rao-Hindi_Customer_Care",
+  "display_name": "Ishita - Expressive Banking Agent",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A warm, high and hushed female voice in Hindi. Best for banking and BFSI support calls."
+ },
+ {
+  "internal_id": "01a0cf16-eddc-7cb3-823b-88731b6cbe29",
+  "voice_id": "Soniya_Mali-Hindi_Numbers",
+  "display_name": "Ishita - Hindi Numbers Specialist",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A warm, slow and expressive female voice in Hindi. Best for number-heavy support calls."
+ },
+ {
+  "internal_id": "01a0cf17-0b6e-79f0-b8ab-7392cabc497b",
+  "voice_id": "Ria_Rao",
+  "display_name": "Ishita - Hinglish Support Agent",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "English",
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A warm, high and hushed female voice in English and Hindi. Best for customer support calls."
+ },
+ {
+  "internal_id": "01a0e8fc-b2bb-781b-a7fa-f5b43f946f03",
+  "voice_id": "Soniya_Mali-Hindi_Informal_Ads",
+  "display_name": "Ishita - Informal Ad Voice",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Advertisement"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A massy, rough and high female voice in Hindi."
+ },
+ {
+  "internal_id": "01a0cf16-6ecd-7a97-b86b-f91eeadd5bd7",
+  "voice_id": "Taksh",
+  "display_name": "Kabir",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [
+   "Pro"
+  ],
+  "usecase": [],
+  "tts_model_name": "sarvam-tts-v3.1-rl-hd",
+  "model_name": "Sarvam TTS v3.1",
+  "description": "Kabir's voice is characterized by its warm and natural tone. His speech is clear and engaging, making it easy for listeners to connect and engage with the content."
+ },
+ {
+  "internal_id": "01a0cf17-13fb-71b7-83c5-f8e21aca30fa",
+  "voice_id": "Taksh",
+  "display_name": "Kabir - Conversational Voice",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Conversational"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A friendly, low and expressive male voice in Hindi. Best for natural back-and-forth conversation."
+ },
+ {
+  "internal_id": "01a0cf16-5f09-7c65-b9e6-9fe94b0e9441",
+  "voice_id": "Vaidehi",
+  "display_name": "Kavya",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [
+   "Pro"
+  ],
+  "usecase": [],
+  "tts_model_name": "sarvam-tts-v3.1-rl-hd",
+  "model_name": "Sarvam TTS v3.1",
+  "description": "Kavya's voice is characterized by its warm and natural tone. Her speech is clear and engaging, making it easy for listeners to connect and engage with the content."
+ },
+ {
+  "internal_id": "01a0cf17-17b8-7952-ab5c-ed9ea97a6925",
+  "voice_id": "Vaidehi",
+  "display_name": "Kavya - Conversational Voice",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Conversational"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A friendly and expressive female voice in Hindi. Best for natural back-and-forth conversation."
+ },
+ {
+  "internal_id": "01a0e8fc-a929-7b3a-b827-a0fba19fe140",
+  "voice_id": "Santosh_Prasad-Hindi_Documentary",
+  "display_name": "Mahesh - Documentary Voice",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Narration"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A clear, low and expressive male voice in Hindi."
+ },
+ {
+  "internal_id": "01a0cf16-6b54-7b44-8dff-e67586a9762a",
+  "voice_id": "Samay",
+  "display_name": "Manan",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [
+   "Pro"
+  ],
+  "usecase": [],
+  "tts_model_name": "sarvam-tts-v3.1-rl-hd",
+  "model_name": "Sarvam TTS v3.1",
+  "description": "Manan's voice is characterized by its warm and natural tone. His speech is clear and engaging, making it easy for listeners to connect and engage with the content."
+ },
+ {
+  "internal_id": "01a0cf17-0c6f-74a6-8a00-58887513283b",
+  "voice_id": "Samay",
+  "display_name": "Manan - Conversational Voice",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Conversational"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A friendly, high and soft-spoken male voice in Hindi. Best for natural back-and-forth conversation."
+ },
+ {
+  "internal_id": "01a0cf16-b14e-7e33-ac4f-40319985b577",
+  "voice_id": "Ranga",
+  "display_name": "Mani - Conversational Voice",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Narration"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A low, soft-spoken and slow male voice in Hindi. Best for long-form narration and audiobooks."
+ },
+ {
+  "internal_id": "01a0e8fc-a787-72de-8991-3815a7b78340",
+  "voice_id": "Sanjeev_Tandel-Hindi_Advertisement",
+  "display_name": "Mukul - Ad Voice",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Advertisement"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A breathy, slow and expressive male voice in Hindi."
+ },
+ {
+  "internal_id": "01a0cf16-5b63-7257-b2ca-d373149dfb2a",
+  "voice_id": "Muskan",
+  "display_name": "Pooja",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [
+   "Pro"
+  ],
+  "usecase": [],
+  "tts_model_name": "sarvam-tts-v3.1-rl-hd",
+  "model_name": "Sarvam TTS v3.1",
+  "description": "Pooja's voice is characterized by its warm and natural tone. Her speech is clear and engaging, making it easy for listeners to connect and engage with the content."
+ },
+ {
+  "internal_id": "01a0cf16-5959-79cb-9949-247c5a33bd48",
+  "voice_id": "Tarini",
+  "display_name": "Priya",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [
+   "Pro"
+  ],
+  "usecase": [],
+  "tts_model_name": "sarvam-tts-v3.1-rl-hd",
+  "model_name": "Sarvam TTS v3.1",
+  "description": "Priya's voice is characterized by its warm and natural tone. Her speech is clear and engaging, making it easy for listeners to connect and engage with the content."
+ },
+ {
+  "internal_id": "01a0cf17-154d-7cc0-b5c3-b11b350d519b",
+  "voice_id": "Tarini",
+  "display_name": "Priya - Recovery Agent",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Collections & Recovery"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A firm, low and expressive female voice in Hindi. Best for collections and payment recovery calls."
+ },
+ {
+  "internal_id": "01a0cf16-5a52-747d-8900-0a77b9f5402c",
+  "voice_id": "Gaurav",
+  "display_name": "Rahul",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [
+   "Pro"
+  ],
+  "usecase": [],
+  "tts_model_name": "sarvam-tts-v3.1-rl-hd",
+  "model_name": "Sarvam TTS v3.1",
+  "description": "Rahul's voice is characterized by its warm and natural tone. His speech is clear and engaging, making it easy for listeners to connect and engage with the content."
+ },
+ {
+  "internal_id": "01a0cf17-05b0-72d6-96e2-8ba654e2ceb5",
+  "voice_id": "Gaurav",
+  "display_name": "Rahul - Conversational Voice",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Conversational"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "An easygoing, high and hushed male voice in Hindi. Best for natural back-and-forth conversation."
+ },
+ {
+  "internal_id": "01a0cf16-68c6-7341-8408-bceec24a6a06",
+  "voice_id": "Jeet",
+  "display_name": "Ratan",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [
+   "Pro"
+  ],
+  "usecase": [],
+  "tts_model_name": "sarvam-tts-v3.1-rl-hd",
+  "model_name": "Sarvam TTS v3.1",
+  "description": "Ratan's voice is characterized by its warm and natural tone. His speech is clear and engaging, making it easy for listeners to connect and engage with the content."
+ },
+ {
+  "internal_id": "01a0cf16-f006-71d6-8c0a-30bfcd271608",
+  "voice_id": "Sudhanshu_Sharan-Hindi_Documentary",
+  "display_name": "Ratan - Documentary Voice",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Narration"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A calm, lively and slow male voice in Hindi. Best for documentary narration."
+ },
+ {
+  "internal_id": "01a0cf16-9d41-700a-9218-57c5c0d5b0b0",
+  "voice_id": "Jeet-Hindi_Customer_Care",
+  "display_name": "Ratan - Expressive Support Agent",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A warm, low and fast male voice in Hindi. Best for customer support calls."
+ },
+ {
+  "internal_id": "01a0e8fc-b537-753d-a255-5eb9b723e77c",
+  "voice_id": "Sudhanshu_Sharan-Hindi_Social_Media",
+  "display_name": "Ratan - Influencer Voice",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Social Media"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A charming, high and lively male voice in Hindi."
+ },
+ {
+  "internal_id": "01a0cf16-f123-7e58-abbb-fb228fed7896",
+  "voice_id": "Sudhanshu_Sharan-Hindi_Recovery_Agent",
+  "display_name": "Ratan - Recovery Agent",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Collections & Recovery"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A firm, low and brisk male voice in Hindi. Best for collections and payment recovery calls."
+ },
+ {
+  "internal_id": "01a0e8fc-8b69-782b-8565-9c87f47373b6",
+  "voice_id": "Jeet",
+  "display_name": "Ratan - Warm Night Companion",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Companion"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A warm, breathy and fast male voice in Hindi."
+ },
+ {
+  "internal_id": "01a0e8fc-ba0c-75a2-883e-694043df8d52",
+  "voice_id": "Vardan-Hindi_Social_Media",
+  "display_name": "Rehan - Influencer Voice",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Social Media"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "An energetic, high and high-energy male voice in Hindi."
+ },
+ {
+  "internal_id": "01a0cf16-5817-79d0-bf32-972e399087db",
+  "voice_id": "Anika",
+  "display_name": "Ritu",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [
+   "Pro"
+  ],
+  "usecase": [],
+  "tts_model_name": "sarvam-tts-v3.1-rl-hd",
+  "model_name": "Sarvam TTS v3.1",
+  "description": "Ritu's voice is characterized by its warm and natural tone. Her speech is clear and engaging, making it easy for listeners to connect and engage with the content."
+ },
+ {
+  "internal_id": "01a0cf16-da10-74b6-a33b-9640d0f046fd",
+  "voice_id": "Shivani_Shekhar_Deshmukh-Hindi_ICICI_Customer_Care",
+  "display_name": "Ritu - Banking Support",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A high, high-energy and bright female voice in Hindi. Best for banking and BFSI support calls."
+ },
+ {
+  "internal_id": "01a0cf16-d697-7eb3-b04f-79641a0aaef2",
+  "voice_id": "Shivani_Shekhar_Deshmukh-Hindi_Conversation",
+  "display_name": "Ritu - Conversational Voice",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Conversational"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A natural, high and lively female voice in Hindi. Best for natural back-and-forth conversation."
+ },
+ {
+  "internal_id": "01a0e8fc-ab43-77e8-ab9d-2cec9ec5dfac",
+  "voice_id": "Shivani_Shekhar_Deshmukh-Hindi_Formal_Ads",
+  "display_name": "Ritu - Formal Ad Voice",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Advertisement"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A massy, high and high-energy female voice in Hindi."
+ },
+ {
+  "internal_id": "01a0cf16-d8d6-70e3-8282-7494b008cb37",
+  "voice_id": "Shivani_Shekhar_Deshmukh-Hindi_E_Learning",
+  "display_name": "Ritu - Hindi E-Learning Tutor",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Educational"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "An engaging, high-energy and slow female voice in Hindi. Best for e-learning and training material."
+ },
+ {
+  "internal_id": "01a0cf16-db1d-7fa1-b803-6c76b70c2917",
+  "voice_id": "Shivani_Shekhar_Deshmukh-Hindi_Insurance_Customer_Care",
+  "display_name": "Ritu - Hindi Insurance Agent",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A warm, high and soft-spoken female voice in Hindi. Best for insurance support and policy renewals."
+ },
+ {
+  "internal_id": "01a0cf16-dc66-7811-a129-ac6855ef5ca9",
+  "voice_id": "Shivani_Shekhar_Deshmukh-Hindi_Medical_Customer_Care",
+  "display_name": "Ritu - Hindi Medical Support",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A gentle, lively and expressive female voice in Hindi. Best for healthcare and patient support calls."
+ },
+ {
+  "internal_id": "01a0cf17-0200-70eb-86af-68c0147d2351",
+  "voice_id": "Anika",
+  "display_name": "Ritu - Hindi Support Agent",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A warm, high and lively female voice in Hindi. Best for customer support calls."
+ },
+ {
+  "internal_id": "01a0e8fc-accd-7171-b0e6-e952a20fc408",
+  "voice_id": "Shivani_Shekhar_Deshmukh-Hindi_Social_Media",
+  "display_name": "Ritu - Influencer Voice",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Social Media"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "An energetic, very high and slow female voice in Hindi."
+ },
+ {
+  "internal_id": "01a0e8fc-abc0-7c93-aa6a-174eb836a648",
+  "voice_id": "Shivani_Shekhar_Deshmukh-Hindi_Informal_Ads",
+  "display_name": "Ritu - Informal Ad Voice",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Advertisement"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A massy, very high and high-energy female voice in Hindi."
+ },
+ {
+  "internal_id": "01a0e8fc-86d1-72b5-89d8-37018dd049b4",
+  "voice_id": "Anika-Hindi_Reels",
+  "display_name": "Ritu - Lively Reel Voice",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Social Media"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A sweet, rough and high female voice in Hindi."
+ },
+ {
+  "internal_id": "01a0cf16-dd5f-77fa-8a45-4a6c01663eb1",
+  "voice_id": "Shivani_Shekhar_Deshmukh-Hindi_Outbound_Sales",
+  "display_name": "Ritu - Sales Agent",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Sales"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A warm, high and lively female voice in Hindi. Best for outbound sales and lead qualification."
+ },
+ {
+  "internal_id": "01a0cf16-d541-7554-a9ad-1e8964aeb427",
+  "voice_id": "Shivani_Shekhar_Deshmukh-Hindi_Bijali_Vibhag_Customer_Care",
+  "display_name": "Ritu - Utility Support",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A warm, high and high-energy female voice in Hindi. Best for utility and billing support calls."
+ },
+ {
+  "internal_id": "01a0cf16-d7da-7f22-b00b-b454c7a709ba",
+  "voice_id": "Shivani_Shekhar_Deshmukh-Hindi_Customer_Care",
+  "display_name": "Ritu - Warm Support Agent",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A warm, high and lively female voice in Hindi. Best for customer support calls."
+ },
+ {
+  "internal_id": "01a0cf16-5c61-787d-a83f-ae54ce8c0f96",
+  "voice_id": "Leo_Recovery",
+  "display_name": "Rohan",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [
+   "Pro"
+  ],
+  "usecase": [],
+  "tts_model_name": "sarvam-tts-v3.1-rl-hd",
+  "model_name": "Sarvam TTS v3.1",
+  "description": "Rohan's voice is characterized by its warm and natural tone. His speech is clear and engaging, making it easy for listeners to connect and engage with the content."
+ },
+ {
+  "internal_id": "01a0cf16-6db9-7f80-9368-0bf6f695d08e",
+  "voice_id": "Swati_Narration",
+  "display_name": "Roopa",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [
+   "Pro"
+  ],
+  "usecase": [],
+  "tts_model_name": "sarvam-tts-v3.1-rl-hd",
+  "model_name": "Sarvam TTS v3.1",
+  "description": "Roopa's voice is characterized by its warm and natural tone. Her speech is clear and engaging, making it easy for listeners to connect and engage with the content."
+ },
+ {
+  "internal_id": "01a0e8fc-b801-7a88-a9c6-7c4dc2755a01",
+  "voice_id": "Swati-Hindi_AI_Companion",
+  "display_name": "Roopa - AI Companion",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Companion"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A soothing, soft-spoken and expressive female voice in Hindi."
+ },
+ {
+  "internal_id": "01a0cf16-f693-7823-b244-369096928e66",
+  "voice_id": "Swati-Hindi_Unspecified",
+  "display_name": "Roopa - Hindi Conversational Voice",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Conversational"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A friendly, hushed and expressive female voice in Hindi. Best for natural back-and-forth conversation."
+ },
+ {
+  "internal_id": "01a0cf16-f569-72ca-b0a6-e1e973c00ae7",
+  "voice_id": "Swati-Hindi_Share_Market",
+  "display_name": "Roopa - Market Analyst",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A warm, high and expressive female voice in Hindi. Best for share market and finance updates."
+ },
+ {
+  "internal_id": "01a0cf16-f486-7d5c-b1cc-7f6a3eef52e3",
+  "voice_id": "Swati-Hindi_Narration",
+  "display_name": "Roopa - Narrator",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Narration"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A low, hushed and dark female voice in Hindi. Best for long-form narration and audiobooks."
+ },
+ {
+  "internal_id": "01a0e8fc-b87f-7efc-a4a0-908a32674ffb",
+  "voice_id": "Swati-Hindi_Recovery_Agent",
+  "display_name": "Roopa - Recovery Agent",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Collections & Recovery"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A full and flowing female voice in Hindi."
+ },
+ {
+  "internal_id": "01a0cf16-ca3d-739c-aaa2-2a9d61f94abf",
+  "voice_id": "Rutpanna_Aishwarya-Hindi_AI_Assistant",
+  "display_name": "Sanchita - AI Assistant",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Assistant & IVR"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A crisp, high-energy and brisk female voice in Hindi. Best for voice assistants and smart devices."
+ },
+ {
+  "internal_id": "01a0cf16-cc50-70f1-a3c2-fc8b0afff87e",
+  "voice_id": "Rutpanna_Aishwarya-Hindi_E_Learning",
+  "display_name": "Sanchita - E-Learning Tutor",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Educational"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "An engaging, high-energy and expressive female voice in Hindi. Best for e-learning and training material."
+ },
+ {
+  "internal_id": "01a0cf16-cb52-7d7d-b708-4ae241366ee1",
+  "voice_id": "Rutpanna_Aishwarya-Hindi_Banking_Customer_Care",
+  "display_name": "Sanchita - Expressive Banking Agent",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A high, high-energy and brisk female voice in Hindi. Best for banking and BFSI support calls."
+ },
+ {
+  "internal_id": "01a0cf16-cd9f-7de5-b8e3-7d438ebb57cd",
+  "voice_id": "Rutpanna_Aishwarya-Hindi_Feedback",
+  "display_name": "Sanchita - Feedback Agent",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Assistant & IVR"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A high, high-energy and rough female voice in Hindi. Best for feedback and survey calls."
+ },
+ {
+  "internal_id": "01a0e8fc-a296-7e2c-a431-b055396bb790",
+  "voice_id": "Rutpanna_Aishwarya-Hindi_Formal_Ads",
+  "display_name": "Sanchita - Formal Ad Voice",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Advertisement"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A calm and low female voice in Hindi."
+ },
+ {
+  "internal_id": "01a0cf16-cfd4-71b3-9254-b921720f3ed0",
+  "voice_id": "Rutpanna_Aishwarya-Hindi_Share_Market",
+  "display_name": "Sanchita - Hindi Market Analyst",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A high, high-energy and slow female voice in Hindi. Best for share market and finance updates."
+ },
+ {
+  "internal_id": "01a0e8fc-a31d-7e65-a508-8b62a5d45639",
+  "voice_id": "Rutpanna_Aishwarya-Hindi_Informal_Ads",
+  "display_name": "Sanchita - Informal Ad Voice",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Advertisement"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A massy, high and high-energy female voice in Hindi."
+ },
+ {
+  "internal_id": "01a0cf16-cea3-70e6-931b-9dc276d6675f",
+  "voice_id": "Rutpanna_Aishwarya-Hindi_Interview_Agent",
+  "display_name": "Sanchita - Interviewer",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Assistant & IVR"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A high-energy, expressive and rough female voice in Hindi. Best for interview and screening flows."
+ },
+ {
+  "internal_id": "01a0cf16-d0cd-7e3a-a054-2bb4a1310538",
+  "voice_id": "Rutpanna_Aishwarya-Hindi_Video_KYC",
+  "display_name": "Sanchita - KYC Agent",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A professional, high and high-energy female voice in Hindi. Best for video KYC and identity verification."
+ },
+ {
+  "internal_id": "01a0cf16-a0c0-76f9-8d2e-79635434a78a",
+  "voice_id": "Neha_Mohanty-Customer_Care",
+  "display_name": "Shalini - Hinglish Support Agent",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "English",
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A warm, low and expressive female voice in English and Hindi. Best for customer support calls."
+ },
+ {
+  "internal_id": "01a0cf16-d212-7f69-b4e0-60b1b45d8c29",
+  "voice_id": "Shibi-Malayalam_Hindi_Mix_Narration",
+  "display_name": "Shilpa - Malayalam Mix Narrator",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi",
+   "Malayalam"
+  ],
+  "tag": [],
+  "usecase": [
+   "Narration"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A clear, low and flat female voice in Hindi and Malayalam. Best for long-form narration and audiobooks."
+ },
+ {
+  "internal_id": "01a0cf16-67bf-76f0-8420-2ce24e69cffb",
+  "voice_id": "Vidya",
+  "display_name": "Shreya",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [
+   "Pro"
+  ],
+  "usecase": [],
+  "tts_model_name": "sarvam-tts-v3.1-rl-hd",
+  "model_name": "Sarvam TTS v3.1",
+  "description": "Shreya's voice is characterized by its warm and natural tone. Her speech is clear and engaging, making it easy for listeners to connect and engage with the content."
+ },
+ {
+  "internal_id": "01a0e8fc-ba8b-79c2-83f9-f64f06fa03f1",
+  "voice_id": "Vidya",
+  "display_name": "Shreya - Conversational Voice",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "News & Sports"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A soft-spoken, full and flowing female voice in Hindi."
+ },
+ {
+  "internal_id": "01a0e8fc-9a2a-76d9-b143-e250fa1d6be1",
+  "voice_id": "Reet-Hindi_E_Learning",
+  "display_name": "Shruti - E-Learning Tutor",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Educational"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "An engaging, high and lively female voice in Hindi."
+ },
+ {
+  "internal_id": "01a0cf16-7179-7472-b7df-b7b432d5faa5",
+  "voice_id": "Viraj",
+  "display_name": "Shubh",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [
+   "Pro"
+  ],
+  "usecase": [],
+  "tts_model_name": "sarvam-tts-v3.1-rl-hd",
+  "model_name": "Sarvam TTS v3.1",
+  "description": "Shubh's voice is characterized by its warm and natural tone. His speech is clear and engaging, making it easy for listeners to connect and engage with the content."
+ },
+ {
+  "internal_id": "01a0cf16-a6b6-7d2d-ad5f-f5217057fde8",
+  "voice_id": "Prashant_Narula-E_Com",
+  "display_name": "Shubh - E-commerce Voice",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A warm, hushed and brisk male voice in Hindi. Best for e-commerce journeys and order updates."
+ },
+ {
+  "internal_id": "01a0e8fc-9701-77b1-a93c-d141554b8130",
+  "voice_id": "Prashant_Narula-Hindi_Premium_Ads",
+  "display_name": "Shubh - Hindi Ad Voice",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Advertisement"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A premium, breathy and low male voice in Hindi."
+ },
+ {
+  "internal_id": "01a0cf16-fc22-79bf-8399-c9723ce4b066",
+  "voice_id": "Viraj-Hindi_Recovery_Agent",
+  "display_name": "Shubh - Hindi Recovery Agent",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Collections & Recovery"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A firm, brisk and expressive male voice in Hindi. Best for collections and payment recovery calls."
+ },
+ {
+  "internal_id": "01a0e8fc-bc83-7913-9400-111eb9974666",
+  "voice_id": "Viraj",
+  "display_name": "Shubh - Hinglish Ad Voice",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "English",
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Advertisement"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A hushed and brisk male voice in English and Hindi."
+ },
+ {
+  "internal_id": "01a0e8fc-968c-7a81-84f5-834465271113",
+  "voice_id": "Prashant_Narula-Hindi_Mixed_Stories",
+  "display_name": "Shubh - Longform Storyteller",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Storytelling"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A natural, low and soft-spoken male voice in Hindi."
+ },
+ {
+  "internal_id": "01a0e8fc-981b-7963-9817-ff955cbb8b9b",
+  "voice_id": "Prashant_Narula-Hindi_Stories",
+  "display_name": "Shubh - Storyteller",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Storytelling"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A dramatic, low and soft-spoken male voice in Hindi."
+ },
+ {
+  "internal_id": "01a0cf16-fb22-7a60-be62-e9bd036a6dab",
+  "voice_id": "Viraj-Hindi_Customer_Care",
+  "display_name": "Shubh - Support Agent",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A warm, hushed and fast male voice in Hindi. Best for customer support calls."
+ },
+ {
+  "internal_id": "01a0cf16-5db4-7924-a37d-8f3bb1234d7c",
+  "voice_id": "Sia",
+  "display_name": "Simran",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [
+   "Pro"
+  ],
+  "usecase": [],
+  "tts_model_name": "sarvam-tts-v3.1-rl-hd",
+  "model_name": "Sarvam TTS v3.1",
+  "description": "Simran's voice is characterized by its warm and natural tone. Her speech is clear and engaging, making it easy for listeners to connect and engage with the content."
+ },
+ {
+  "internal_id": "01a0cf16-beba-74d5-b4e1-fa97f11587f6",
+  "voice_id": "Rinki_Singhvi-Hindi_AI_Assistant",
+  "display_name": "Simran - AI Assistant",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Assistant & IVR"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A measured, low and slow female voice in Hindi. Best for voice assistants and smart devices."
+ },
+ {
+  "internal_id": "01a0e8fc-9d8f-7ba3-9397-3c0443e9f918",
+  "voice_id": "Rinki_Singhvi-Hindi_Social_Media",
+  "display_name": "Simran - Energetic Influencer Voice",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Social Media"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "An energetic, very high and high-energy female voice in Hindi."
+ },
+ {
+  "internal_id": "01a0e8fc-afcd-77b6-acfe-4c0341856ee6",
+  "voice_id": "Sia-Hindi_Social_Media",
+  "display_name": "Simran - Excited Influencer Voice",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Social Media"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "An energetic, rough and high female voice in Hindi."
+ },
+ {
+  "internal_id": "01a0cf16-c013-7907-8311-4977d02f37f5",
+  "voice_id": "Rinki_Singhvi-Hindi_Audio_Description",
+  "display_name": "Simran - Hindi Audio Describer",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Narration"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A mature, low and lively female voice in Hindi. Best for audio description and accessibility work."
+ },
+ {
+  "internal_id": "01a0cf16-c153-7c18-bee4-b599f3a8f423",
+  "voice_id": "Rinki_Singhvi-Hindi_Automobile",
+  "display_name": "Simran - Hindi Auto Advisor",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A confident, low and lively female voice in Hindi. Best for automotive and mobility content."
+ },
+ {
+  "internal_id": "01a0cf16-c253-72de-a0e3-d99c8127a4bd",
+  "voice_id": "Rinki_Singhvi-Hindi_Conversation",
+  "display_name": "Simran - Hindi Conversational Voice",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Conversational"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A friendly, low and soft-spoken female voice in Hindi. Best for natural back-and-forth conversation."
+ },
+ {
+  "internal_id": "01a0cf16-c38c-7c6c-8e6a-f0bd7af56a16",
+  "voice_id": "Rinki_Singhvi-Hindi_Recovery_Agent",
+  "display_name": "Simran - Hindi Recovery Agent",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Collections & Recovery"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A firm, low and brisk female voice in Hindi. Best for collections and payment recovery calls."
+ },
+ {
+  "internal_id": "01a0cf16-c494-7231-b33d-fc186090959f",
+  "voice_id": "Rinki_Singhvi-Hindi_Sales_Agent",
+  "display_name": "Simran - Hindi Sales Agent",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Sales"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "An engaging, low and brisk female voice in Hindi. Best for outbound sales and lead qualification."
+ },
+ {
+  "internal_id": "01a0cf17-12bd-7de3-9df0-f607db604d52",
+  "voice_id": "Sia",
+  "display_name": "Simran - Hinglish Support Agent",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "English",
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A warm, low and brisk female voice in English and Hindi. Best for customer support calls."
+ },
+ {
+  "internal_id": "01a0cf16-e0d7-7870-a832-83bdd785052c",
+  "voice_id": "Shweta_Pandey-Hindi_E_Com",
+  "display_name": "Suchitra - E-commerce Voice",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A low, brisk and dark female voice in Hindi. Best for e-commerce journeys and order updates."
+ },
+ {
+  "internal_id": "01a0e8fc-9f41-7d10-9f15-1720a4b077d0",
+  "voice_id": "Roopa-Hindi_Social_Media",
+  "display_name": "Suhani - Influencer Voice",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Social Media"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A rough, high and expressive female voice in Hindi."
+ },
+ {
+  "internal_id": "01a0e8fc-a540-7db8-b919-feda80526484",
+  "voice_id": "Saloni_Ganvir-Hindi_AI_Companion",
+  "display_name": "Suman - AI Companion",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Companion"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A sweet, breathy and high female voice in Hindi."
+ },
+ {
+  "internal_id": "01a0cf16-6c54-746b-815a-2e1cf51a473a",
+  "voice_id": "Shivank",
+  "display_name": "Sumit",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [
+   "Pro"
+  ],
+  "usecase": [],
+  "tts_model_name": "sarvam-tts-v3.1-rl-hd",
+  "model_name": "Sarvam TTS v3.1",
+  "description": "Sumit's voice is characterized by its warm and natural tone. His speech is clear and engaging, making it easy for listeners to connect and engage with the content."
+ },
+ {
+  "internal_id": "01a0cf17-0da5-7275-900c-186dfec4d34f",
+  "voice_id": "Shivank",
+  "display_name": "Sumit - Conversational Voice",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Conversational"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A friendly, high and hushed male voice in Hindi. Best for natural back-and-forth conversation."
+ },
+ {
+  "internal_id": "01a0e8fc-9618-7a94-8176-be79e8d396b5",
+  "voice_id": "Prashant_Narula-Hindi_Mass_Ads",
+  "display_name": "Sunny - Mass Ad Voice",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Advertisement"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A massy, lively and slow male voice in Hindi."
+ },
+ {
+  "internal_id": "01a0e8fc-9775-7d6c-87ff-62d983f34f06",
+  "voice_id": "Prashant_Narula-Hindi_Reels",
+  "display_name": "Sunny - Reel Voice",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Social Media"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A punchy, high and soft-spoken male voice in Hindi."
+ },
+ {
+  "internal_id": "01a0cf17-0379-7e04-9e7f-9955e5a97657",
+  "voice_id": "Bunty",
+  "display_name": "Sunny - Support Agent",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "English",
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A warm, high and soft-spoken male voice in English and Hindi. Best for customer support calls."
+ },
+ {
+  "internal_id": "01a0cf16-a32a-730c-9800-0451f3f6598e",
+  "voice_id": "Padmaja-Telugu_Hindi_Mix_Narration",
+  "display_name": "Tanya - Telugu Mix Narrator",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi",
+   "Telugu"
+  ],
+  "tag": [],
+  "usecase": [
+   "Narration"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A rich and bright female voice in Hindi and Telugu. Best for long-form narration and audiobooks."
+ },
+ {
+  "internal_id": "01a0cf17-06f8-75f3-bda1-a9b4c637a4a4",
+  "voice_id": "Krishna",
+  "display_name": "Tarun - Conversational Voice",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Sales"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A persuasive, high and soft-spoken male voice in Hindi. Best for outbound sales and lead qualification."
+ },
+ {
+  "internal_id": "01a0cf16-8f90-7ce7-8059-40c0005070ee",
+  "voice_id": "Avinash_Kuri-Hindi_Outbound_Sales",
+  "display_name": "Tarun - Sales Agent",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Sales"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A confident, fast and expressive male voice in Hindi. Best for outbound sales and lead qualification."
+ },
+ {
+  "internal_id": "01a0cf16-e455-7887-b274-77f1c903825f",
+  "voice_id": "Smruti-Hindi_E_Com",
+  "display_name": "Vandana - E-commerce Voice",
+  "gender": "female",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [],
+  "usecase": [
+   "Customer Support"
+  ],
+  "tts_model_name": "sarvam-tts-v4.0-beta",
+  "model_name": "Sarvam TTS v4",
+  "description": "A slow, full and flowing female voice in Hindi. Best for e-commerce journeys and order updates."
+ },
+ {
+  "internal_id": "01a0cf16-6a07-7cee-b592-494b2d213be1",
+  "voice_id": "Rudra_Suspense",
+  "display_name": "Varun",
+  "gender": "male",
+  "provider": "sarvam",
+  "accent": "Default",
+  "supported_languages": [
+   "Bengali",
+   "English",
+   "Gujarati",
+   "Hindi",
+   "Kannada",
+   "Konkani",
+   "Malayalam",
+   "Marathi",
+   "Odia",
+   "Punjabi",
+   "Tamil",
+   "Telugu"
+  ],
+  "preferred_languages": [
+   "Hindi"
+  ],
+  "tag": [
+   "Pro"
+  ],
+  "usecase": [],
+  "tts_model_name": "sarvam-tts-v3.1-rl-hd",
+  "model_name": "Sarvam TTS v3.1",
+  "description": "Varun's voice is characterized by its warm and natural tone. His speech is clear and engaging, making it easy for listeners to connect and engage with the content."
+ }
+]

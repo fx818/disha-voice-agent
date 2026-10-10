@@ -1,0 +1,40 @@
+# Secrets: API keys live only in .env (never committed)
+.env
+.env.*
+!.env.example
+
+# Seller data and everything generated from it (internal use only).
+# Only the analysis and video scripts under outputs/ are kept.
+/outputs/*
+!/outputs/segmentation/
+/outputs/segmentation/*
+!/outputs/segmentation/scripts/
+/outputs/segmentation/scripts/*
+!/outputs/segmentation/scripts/*.py
+!/outputs/video/
+/outputs/video/*
+!/outputs/video/make_voiceover.py
+!/outputs/video/mix_final.py
+
+# Data and media files anywhere, as a second guard
+*.parquet
+*.csv
+*.xlsx
+*.jsonl
+*.wav
+*.mp3
+*.mp4
+*.webm
+
+# Python and tooling
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+tools/bin/
+node_modules/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store

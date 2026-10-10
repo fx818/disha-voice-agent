@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VANI Persona Demo</title>
+<style>
+  :root {
+    --bg: #f6f5f2; --panel: #ffffff; --ink: #1d1d1b; --muted: #6b6a66; --line: #e3e1db;
+    --accent: #2f5bea; --accent-ink: #ffffff; --bot: #eef2ff; --seller: #f2f1ec;
+    --high: #1f8a4c; --medium: #b7791f; --low: #b42318;
+    --sig-rush: #c2410c; --sig-confusion: #7c3aed; --sig-frustration: #b42318;
+    --sig-interest: #1f8a4c; --sig-language_switch: #2f5bea;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #151514; --panel: #1f1f1d; --ink: #ecebe7; --muted: #9b9a94; --line: #34332f;
+      --accent: #7c9cff; --accent-ink: #0d0d0c; --bot: #23283a; --seller: #2a2a27;
+      --high: #4cc283; --medium: #e0a84a; --low: #f07a6e;
+      --sig-rush: #fb923c; --sig-confusion: #a78bfa; --sig-frustration: #f87171;
+      --sig-interest: #4ade80; --sig-language_switch: #7c9cff;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { display: flex; gap: 16px; align-items: center; padding: 14px 20px;
+           border-bottom: 1px solid var(--line); background: var(--panel); flex-wrap: wrap; }
+  header h1 { font-size: 16px; margin: 0 12px 0 0; }
+  select, button { font: inherit; padding: 7px 12px; border-radius: 8px; border: 1px solid var(--line);
+                   background: var(--panel); color: var(--ink); }
+  button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); cursor: pointer; }
+  button.primary.end { background: var(--low); border-color: var(--low); }
+  #status { color: var(--muted); }
+  main { display: grid; grid-template-columns: 1.1fr 1.2fr 1fr; gap: 14px; padding: 14px 20px; }
+  @media (max-width: 1000px) { main { grid-template-columns: 1fr; } }
+  section { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px;
+            min-width: 0; }
+  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 0 0 10px; }
+  h3 { font-size: 14px; margin: 14px 0 6px; }
+  .snap { color: var(--muted); margin-bottom: 6px; }
+  .row { display: grid; grid-template-columns: 110px 1fr; gap: 8px; padding: 6px 0; border-top: 1px solid var(--line); }
+  .row .k { color: var(--muted); }
+  .why { color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+  .conf { font-size: 11px; font-weight: 600; padding: 1px 6px; border-radius: 99px; border: 1px solid currentColor; margin-left: 6px; }
+  .conf.high { color: var(--high); } .conf.medium { color: var(--medium); } .conf.low { color: var(--low); }
+  ul { margin: 4px 0; padding-left: 18px; }
+  #transcript { height: 60vh; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; }
+  .msg { padding: 8px 11px; border-radius: 10px; max-width: 88%; }
+  .msg.bot { background: var(--bot); align-self: flex-start; }
+  .msg.seller { background: var(--seller); align-self: flex-end; }
+  .msg .meta { font-size: 11px; color: var(--muted); }
+  .msg.switch { align-self: center; background: transparent; border: 1px dashed var(--line); font-size: 12.5px; }
+  .live { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 12px; }
+  .tile { border: 1px solid var(--line); border-radius: 8px; padding: 7px 9px; }
+  .tile .k { font-size: 11px; color: var(--muted); }
+  .tile .v { font-weight: 600; }
+  .tile.changed { border-color: var(--accent); }
+  .sw { border-left: 3px solid var(--line); padding: 6px 10px; margin-bottom: 10px; }
+  .sw .sig { font-weight: 700; text-transform: capitalize; }
+  .sw .chg { font-family: ui-monospace, monospace; font-size: 12px; }
+  .empty { color: var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <h1>VANI · Seller-fit persona</h1>
+  <select id="seller"></select>
+  <button id="call" class="primary">Start call</button>
+  <span id="status">Pick a seller, then start the call and talk into your mic.</span>
+  <audio id="audio" autoplay></audio>
+</header>
+<main>
+  <section><h2>Persona spec</h2><div id="persona" class="empty">Loading…</div></section>
+  <section><h2>Live call</h2><div id="transcript"></div></section>
+  <section>
+    <h2>Live delivery</h2><div id="live" class="live"></div>
+    <h2>Switch log</h2><div id="switches"><div class="empty">No switches yet.</div></div>
+  </section>
+</main>
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let pc = null, es = null, mic = null, initialLive = null, MODE = "pipecat", inCall = false;
+
+const conf = (c) => c ? `<span class="conf ${esc(c)}">${esc(c)}</span>` : "";
+function row(k, v, why, c) {
+  return `<div class="row"><div class="k">${esc(k)}</div><div>${v}${conf(c)}${why ? `<div class="why">${esc(why)}</div>` : ""}</div></div>`;
+}
+
+function renderPersona(p) {
+  const s = p.seller_snapshot || {}, v = p.voice || {}, l = p.language || {}, t = p.tone || {}, plan = p.plan || {};
+  let h = `<div><b>${esc(s.company || "Seller " + p.seller_id)}</b> <span class="snap">${esc(s.segment || "")}</span></div>
+    <div class="snap">${esc([s.nature, s.business_type, s.turnover, s.city, s.state].filter(Boolean).join(" · "))}</div>`;
+  h += row("Voice", `${esc(v.speaker)} (${esc(v.gender)}), pace ${esc(v.pace)}`, v.reason, v.confidence);
+  h += row("Language", `${esc(l.language_code)}, English ${Math.round((l.english_mix ?? 0) * 100)}%, ${esc(l.formality)}`, l.reason, l.confidence);
+  h += row("Tone", `warmth ${esc(t.warmth)}, empathy ${esc(t.empathy)}, ${esc(t.energy)}`, t.reason, t.confidence);
+  if (plan.opening) h += row("Opening", esc(plan.opening.approach) + (plan.opening.example_line ? `<div><i>“${esc(plan.opening.example_line)}”</i></div>` : ""), plan.opening.reason, plan.opening.confidence);
+  const list = (arr, f) => (arr && arr.length) ? `<ul>${arr.map(f).join("")}</ul>` : "";
+  h += `<h3>Personalisation</h3>` + list(plan.personalisation, (x) => `<li>${esc(x.hook)}<div class="why">${esc(x.reason)}</div></li>`);
+  h += `<h3>Objection playbook</h3>` + list(plan.objection_playbook, (x) => `<li><b>${esc(x.objection)}</b>: ${esc(x.approach)}<div class="why">${esc(x.reason || "")} ${esc(x.evidence || "")}</div></li>`);
+  h += `<h3>Escalation</h3>` + list(plan.escalation_rules, (x) => `<li><b>${esc(x.trigger)}</b> → ${esc(x.action)}</li>`);
+  h += `<h3>Guardrails</h3>` + list(p.guardrails, (x) => `<li>${esc(x)}</li>`);
+  $("persona").innerHTML = h;
+}
+
+const LIVE_KEYS = [["language_code","Language"],["speaker","Voice"],["pace","Pace"],["english_mix","English mix"],
+  ["warmth","Warmth"],["energy","Energy"],["max_sentences","Max sentences"],["focus","Focus"],["temperature","Expressiveness"]];
+function renderLive(live) {
+  $("live").innerHTML = LIVE_KEYS.map(([k, label]) => {
+    const changed = initialLive && initialLive[k] !== live[k];
+    return `<div class="tile ${changed ? "changed" : ""}"><div class="k">${label}</div><div class="v">${esc(live[k])}</div></div>`;
+  }).join("");
+}
+
+function addMsg(who, text, meta) {
+  const d = document.createElement("div");
+  d.className = "msg " + who;
+  d.innerHTML = `<div class="meta">${esc(meta)}</div>${esc(text)}`;
+  $("transcript").appendChild(d);
+  $("transcript").scrollTop = 1e9;
+}
+
+function addSwitch(sw) {
+  const box = $("switches");
+  if (box.querySelector(".empty")) box.innerHTML = "";
+  const color = `var(--sig-${sw.signal}, var(--accent))`;
+  const chg = Object.entries(sw.change).map(([k, [a, b]]) => `${esc(k)}: ${esc(a)} → ${esc(b)}`).join("<br>");
+  const d = document.createElement("div");
+  d.className = "sw"; d.style.borderLeftColor = color;
+  d.innerHTML = `<div><span class="sig" style="color:${color}">${esc(sw.signal.replace("_", " "))}</span>
+    <span class="snap"> · turn ${sw.turn} · ${sw.t_sec}s · ${esc(sw.detector)}</span></div>
+    <div>Signal: ${esc(sw.evidence)}</div><div class="chg">${chg}</div><div class="why">${esc(sw.reason)}</div>`;
+  box.prepend(d);
+  addMsg("switch", `⇄ ${sw.signal.replace("_", " ")}: ${sw.reason}`, `persona switch · ${sw.t_sec}s`);
+}
+
+async function loadSellers() {
+  const list = await (await fetch("/api/personas")).json();
+  const items = Array.isArray(list) ? list : (list.sellers || []);
+  items.sort((a, b) => (b.demo ? 1 : 0) - (a.demo ? 1 : 0));
+  $("seller").innerHTML = items.map((x) => `<option value="${esc(x.seller_id)}">${x.demo ? "★ " : ""}${esc(x.label || x.seller_id)}</option>`).join("");
+  await showSeller();
+}
+
+async function showSeller() {
+  const id = $("seller").value;
+  if (!id) { $("persona").textContent = "No persona specs yet — run the generator."; return; }
+  const p = await (await fetch("/api/persona/" + encodeURIComponent(id))).json();
+  renderPersona(p);
+  initialLive = null; $("live").innerHTML = "";
+}
+
+async function startCall() {
+  const sessionId = crypto.randomUUID();
+  if (MODE === "samvaad") return startSamvaad(sessionId);
+  $("transcript").innerHTML = ""; $("switches").innerHTML = `<div class="empty">No switches yet.</div>`;
+  es = new EventSource("/api/events/" + sessionId);
+  es.onmessage = (m) => {
+    const ev = JSON.parse(m.data), d = ev.data;
+    if (ev.kind === "persona") { initialLive = { ...d.live }; renderLive(d.live); }
+    else if (ev.kind === "transcript") addMsg(d.who, d.text, `${d.who === "bot" ? "VANI" : "Seller"} · ${d.t}s${d.lang ? " · " + d.lang : ""}`);
+    else if (ev.kind === "switch") addSwitch(d);
+    else if (ev.kind === "state") renderLive(d);
+    else if (ev.kind === "ended") { $("status").textContent = "Call ended. Switch log saved to " + d.log; }
+  };
+
+  mic = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
+  pc = new RTCPeerConnection({ iceServers: [{ urls: "stun:stun.l.google.com:19302" }] });
+  mic.getTracks().forEach((t) => pc.addTrack(t, mic));
+  pc.addTransceiver("video", { direction: "recvonly" });
+  pc.ontrack = (e) => { if (e.track.kind === "audio") $("audio").srcObject = e.streams[0] || new MediaStream([e.track]); };
+  pc.onconnectionstatechange = () => { $("status").textContent = "Connection: " + pc.connectionState; };
+
+  await pc.setLocalDescription(await pc.createOffer());
+  await new Promise((r) => {
+    if (pc.iceGatheringState === "complete") return r();
+    pc.addEventListener("icegatheringstatechange", () => pc.iceGatheringState === "complete" && r());
+    setTimeout(r, 2000);
+  });
+  const res = await fetch("/api/offer", {
+    method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ sdp: pc.localDescription.sdp, type: pc.localDescription.type,
+                           request_data: { seller_id: $("seller").value, session_id: sessionId } }),
+  });
+  if (!res.ok) { $("status").textContent = "Server error: " + (await res.text()); return stopCall(); }
+  await pc.setRemoteDescription(await res.json());
+  $("call").textContent = "End call"; $("call").classList.add("end");
+}
+
+function openEvents(sessionId) {
+  es = new EventSource("/api/events/" + sessionId);
+  es.onmessage = (m) => {
+    const ev = JSON.parse(m.data), d = ev.data;
+    if (ev.kind === "persona") { initialLive = { ...d.live }; renderLive(d.live); }
+    else if (ev.kind === "transcript") addMsg(d.who, d.text, `${d.who === "bot" ? "VANI" : "Seller"} · ${d.t}s${d.lang ? " · " + d.lang : ""}`);
+    else if (ev.kind === "switch") addSwitch(d);
+    else if (ev.kind === "detector") addMsg("switch", `local detector saw: ${d.signal} (${d.evidence})`, `cross-check · ${d.t_sec}s`);
+    else if (ev.kind === "state") renderLive(d);
+    else if (ev.kind === "status") $("status").textContent = d.error ? "Error: " + d.error : d.ended ? "Call ended." : "Samvaad call " + (d.interaction_id || "");
+    else if (ev.kind === "ended") { $("status").textContent = "Call ended. Switch log saved to " + d.log; endUi(); }
+  };
+}
+
+async function startSamvaad(sessionId) {
+  $("transcript").innerHTML = ""; $("switches").innerHTML = `<div class="empty">No switches yet.</div>`;
+  openEvents(sessionId);
+  const res = await fetch("/api/start", { method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ seller_id: $("seller").value, session_id: sessionId }) });
+  if (!res.ok) { $("status").textContent = "Server error: " + (await res.text()); return; }
+  inCall = true; $("status").textContent = "Connecting to Samvaad… speak into the laptop mic.";
+  $("call").textContent = "End call"; $("call").classList.add("end");
+}
+
+function endUi() {
+  inCall = false; $("call").textContent = "Start call"; $("call").classList.remove("end");
+}
+
+function stopCall() {
+  if (MODE === "samvaad") { fetch("/api/stop", { method: "POST" }); return endUi(); }
+  if (pc) pc.close(); if (mic) mic.getTracks().forEach((t) => t.stop());
+  pc = null; mic = null;
+  setTimeout(() => es && es.close(), 3000);
+  $("call").textContent = "Start call"; $("call").classList.remove("end");
+}
+
+$("seller").onchange = showSeller;
+$("call").onclick = () => ((pc || inCall) ? stopCall() : startCall().catch((e) => { $("status").textContent = "Error: " + e.message; stopCall(); }));
+fetch("/api/mode").then((r) => r.ok ? r.json() : { mode: "pipecat" }).then((m) => {
+  MODE = m.mode || "pipecat";
+  if (MODE === "samvaad") { document.querySelector("h1").textContent = "VANI · Seller-fit persona · on Samvaad"; document.title = "VANI Persona Samvaad"; }
+}).catch(() => {});
+loadSellers().catch((e) => ($("persona").textContent = "Could not load personas: " + e.message));
+</script>
+</body>
+</html>
