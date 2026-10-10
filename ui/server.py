@@ -2,7 +2,8 @@
 
 Run:  .venv/bin/python -I ui/server.py   → open http://localhost:7862
 
-- Seller list: outputs/demo_profiles.json + outputs/custom_profiles.md, plus any seller id (built on demand).
+- Seller list: outputs/demo_profiles.json + outputs/custom_profiles.md + outputs/product_sellers.json, plus any
+  seller id (built on demand).
 - Preview: runs the uploaded code tool's OnStart locally (live Jev, same code as on Samvaad) and records the exact
   Jev request and answers.
 - Laptop call: Samvaad SDK websocket with seller_profile as the only per-call variable; live transcript over SSE.
@@ -46,11 +47,13 @@ from sarvam_conv_ai_sdk.audio_interface import AsyncAudioInterface  # noqa: E402
 APP_ID = os.getenv("DISHA_APP_ID", "Disha---Ind-85eb0f30-d809")
 APP_VERSION = int(os.getenv("DISHA_APP_VERSION", "1"))
 PHONE = os.getenv("DISHA_TEST_PHONE", "")  # your verified test number, from .env
+# The seller prefilled on the Samvaad dashboard for anyone testing Disha there; restored after each console phone call
+DEFAULT_SELLER = os.getenv("DISHA_DEFAULT_SELLER", "")  # seller id from .env; empty = leave the default alone
 ORG, WS, KEY = os.environ["SAMVAAD_ORG_ID"], os.environ["SAMVAAD_WORKSPACE_ID"], os.environ["SAMVAAD_API_KEY"]
 ANALYTICS = f"https://apps.sarvam.ai/api/analytics/v1/{ORG}/{WS}/{APP_ID}"
 OUTBOUND = f"https://apps.sarvam.ai/api/outbounds/v1/orgs/{ORG}/workspaces/{WS}/outbounds"
 RUNS = ROOT / "outputs" / "console_runs"
-OUTPUT_VARS = ["disposition", "call_summary", "meeting_date", "meeting_time", "seller_notes", "use_case",
+OUTPUT_VARS = ["disposition", "call_summary", "meeting_date", "meeting_time", "seller_notes", "alternate_contact", "use_case",
                "use_case_confidence", "use_case_reason", "persona_style", "seller_history", "switch_log_json",
                "persona_switch_log", "jev_signals", "persona_spec", "persona_notes", "company_name", "city",
                "call_review", "seller_id"]
@@ -107,6 +110,11 @@ def _sellers() -> dict[str, dict]:
                              "state": gen.get("seller_state"), "group": "Custom",
                              "label": head.split(":")[0] + (f" · {tests.group(1)}" if tests else ""),
                              "profile": m.group(1)})
+    prod = ROOT / "outputs" / "product_sellers.json"  # tools/export_product_sellers.py
+    for p in json.loads(prod.read_text()) if prod.exists() else []:
+        out.setdefault(str(p["seller_id"]), {"seller_id": str(p["seller_id"]), "company": p.get("company"),
+                                             "city": p.get("city"), "state": p.get("state"), "group": "Product data",
+                                             "label": p.get("label"), "profile": p["profile"]})
     for f in sorted(RUNS.glob("lookup_*.json")) if RUNS.is_dir() else []:
         p = json.loads(f.read_text())
         out.setdefault(p["seller_id"], p)
@@ -470,7 +478,10 @@ class Call:
             self.ended = True
             self.emit("ended", {})
             return
-        await self.poll_phone()
+        try:
+            await self.poll_phone()
+        finally:
+            await restore_default_seller()
 
     async def poll_phone(self):
         """The REST API has no live stream for phone calls: find the interaction, then show the transcript as soon
@@ -609,6 +620,18 @@ async def review_and_learn(seller: dict, iid: str, out: dict, transcript: list) 
 
 
 current: dict = {"call": None}
+
+
+async def restore_default_seller():
+    """Put the dashboard's prefilled seller back (phone calls borrow the draft's seller_profile default)."""
+    s = _sellers().get(DEFAULT_SELLER)
+    if not s:
+        return
+    try:
+        await samvaad_mcp.call_tool("configure_agent", {"agent_id": APP_ID, "config": {"llm_config": {"agent_config": {
+            "agent_variables": {"seller_profile": {"name": "seller_profile", "value": s["profile"]}}}}}})
+    except Exception as e:  # never fail a call over the dashboard default
+        print(f"[console] could not restore the default seller: {type(e).__name__}: {e}")
 
 
 @app.post("/api/call")

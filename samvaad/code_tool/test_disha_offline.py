@@ -420,6 +420,78 @@ def test_static():
         check(hasattr(T, name), f"public name {name}")
 
 
+async def test_product_gaps():
+    print("\nProduct data · gap facts, purpose line, seller brief")
+    snap = {"products": 21, "without_image": 8, "without_price": 18}
+    check(T.product_snapshot({"catalog": {"product_snapshot": snap}}) == snap, "valid snapshot accepted")
+    for bad in ({"products": 0, "without_image": 0, "without_price": 0}, {"products": 5, "without_image": 6, "without_price": 0},
+                {"products": "x"}, {"products": 5.5, "without_image": 1, "without_price": 1}, None):
+        check(T.product_snapshot({"catalog": {"product_snapshot": bad}}) is None, f"bad snapshot rejected: {bad}")
+    hi = T.gap_hook("hi-IN", snap)
+    check("21 products" in hi and "8 mein photo" in hi and "buyers" in hi and hi.startswith("Jaisa ki"),
+          f"Hindi gap line: {hi}")
+    check("none of them has a photo" in T.gap_hook("en-IN", {"products": 4, "without_image": 4, "without_price": 0}),
+          "English all-missing wording")
+    check("price" in T.gap_hook("ta-IN", {"products": 4, "without_image": 0, "without_price": 2}), "Tamil price-only gap")
+    check(T.gap_hook("hi-IN", {"products": 4, "without_image": 0, "without_price": 0}) is None, "no gap, no gap line")
+    check(T.strong_gaps(snap) and not T.strong_gaps({"products": 20, "without_image": 2, "without_price": 5}),
+          "strong gaps threshold")
+
+    def prof(use_case, snapshot):
+        p = base_profile()
+        p["jev"]["catalog"]["product_snapshot"] = snapshot
+        p["rules"].update(use_case=use_case, contact_policy="OK_TO_CALL")
+        return json.dumps(p)
+
+    ctx, _ = await on_start(prof("discovery", snap), FakeJev(answers(catalog=0.5)))
+    av = ctx.agent_variables
+    check(av["use_case"] == "profile_onboarding" and "catalog gaps" in av["use_case_reason"],
+          f"discovery + clear gaps -> profile_onboarding ({av['use_case']})")
+    notes = av["persona_notes"]
+    check("Seller brief" in notes and "8 without a photo" in notes and "21 products" in notes,
+          "seller brief lists the product gaps")
+    check("not which products" in notes and "never name a product" in notes,
+          "seller brief says which products have gaps is unknown")
+    check("8 mein photo" in notes or "8 of them have no photo" in notes or "8-ku photo" in notes,
+          "purpose line names the photo gap")
+    ctx, _ = await on_start(prof("discovery", {"products": 20, "without_image": 1, "without_price": 3}),
+                            FakeJev(answers(catalog=0.5)))
+    check(ctx.agent_variables["use_case"] == "discovery", "small gaps leave discovery alone")
+    p = json.loads(prof("discovery", snap)); p["rules"]["contact_policy"] = "SUPPRESS"
+    ctx, _ = await on_start(json.dumps(p), FakeJev(answers(catalog=0.5)))
+    check("Seller brief" not in ctx.agent_variables["persona_notes"], "no seller brief on a blocked call")
+
+
+def test_callback_first():
+    print("\nOpening · callback request comes first in the purpose line")
+    spec = {"plan": {"opening": {"approach": "Reference their earlier callback request, then go straight to scheduling."}}}
+    facts = {"callback_requested": True, "enquiries_received": True}
+    _, why, _ = T.choose_opening(spec, "Acme", "lead_engagement", "hi-IN", facts)
+    line = why.split("purpose line for Phase 2: ", 1)[1]
+    check(line.startswith("Pichhli baar aapse baat hui thi") and "buyer enquiries" in line, f"Hindi: {line[:120]}")
+    _, why, _ = T.choose_opening(spec, "Acme", "warm_followup", "hi-IN", facts)
+    check("Pichhli baar" not in why, "warm follow-up evidence hook is not doubled")
+    _, why, _ = T.choose_opening(spec, "Acme", "lead_engagement", "hi-IN", {"callback_requested": False})
+    check("Pichhli baar" not in why, "no callback on record, no callback line")
+
+
+async def test_call_plans():
+    print("\nCall plans · every purpose has one; notes carry it; blocked calls do not")
+    for uc in T.USE_CASES:
+        txt = T.call_plan_text(uc)
+        check(txt.startswith(f"Call plan for {uc}") and "Seller replies:" in txt and "Success:" in txt, f"plan for {uc}")
+    check("aapka kaam aajkal kaisa chal raha hai" in T.call_plan_text("reactivation"), "reactivation check-in line")
+    p = base_profile(); p["rules"].update(use_case="reactivation", contact_policy="OK_TO_CALL")
+    ctx, _ = await on_start(json.dumps(p), FakeJev(answers({"inactive_business": 0.9}, catalog=0.5)))
+    av = ctx.agent_variables
+    check(av["use_case"] != "reactivation" or "Call plan for reactivation" in av["persona_notes"],
+          f"notes carry the plan for {av['use_case']}")
+    check(f"Call plan for {av['use_case']}" in av["persona_notes"], "notes carry the chosen purpose's plan")
+    p["rules"]["contact_policy"] = "SUPPRESS"
+    ctx, _ = await on_start(json.dumps(p), FakeJev(answers(catalog=0.5)))
+    check("Call plan" not in ctx.agent_variables["persona_notes"], "no call plan on a blocked call")
+
+
 async def main():
     await test_envelopes()
     await test_nonfinite()
@@ -433,6 +505,9 @@ async def main():
     await test_notes_delivery()
     await test_persona_switch()
     await test_on_end()
+    await test_product_gaps()
+    test_callback_first()
+    await test_call_plans()
     test_static()
     ok = all(RESULTS)
     print(f"\n{sum(RESULTS)}/{len(RESULTS)} checks passed")

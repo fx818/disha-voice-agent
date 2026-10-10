@@ -196,6 +196,7 @@ async function open(id){
   $('#pv').onclick=preview;$('#cl').onclick=()=>call('laptop');$('#cp').onclick=()=>call('phone');$('#hu').onclick=hangup;
   const keys=[['Company','company'],['City','seller_city'],['State','seller_state'],['Business','nature_of_business'],['Turnover','annual_turnover'],
    ['Top categories',g=>[g.top_category_1,g.top_category_2,g.top_category_3].filter(Boolean).join(' · ')],['Products listed','eng_product_count'],['Catalog quality','eng_cqs'],
+   ['Product data: products / no photo / no price',()=>{const q=p.jev?.catalog?.product_snapshot;return q?`${q.products} / ${q.without_image} / ${q.without_price}`:'—'}],
    ['Enquiries (90d)','eng_enq_received_90d'],['Replies (90d)','eng_enq_replies_90d'],['Bot calls answered / tried',g=>`${g.bot_answered??'?'} / ${g.bot_attempts??'?'}`],
    ['Avg answered call (s)','avg_answered_call_sec'],['Meetings fixed','calls_meeting_fixed'],['Not interested','calls_not_interested'],['Last trigger bucket','ctx_last_bucket'],
    ['Past dispositions','past_dispositions_detailed'],['Objections','past_objections'],['Asked if bot','asked_if_talking_to_bot'],['Do-not-call asked','do_not_call_requested']];
@@ -394,7 +395,7 @@ function finish(){audioStop();if(C){C.active=false;C.tEnd=C.tEnd||performance.no
   document.querySelector('.tabs button[data-t="3"]')?.classList.remove('liveon');
   const s=$('#stage');if(s&&!s.className.includes('ended'))setPhase('ended','Call ended');
   const t=$('#turn');if(t&&t.textContent.startsWith('Fetching'))t.textContent='Call ended'}
-const DISPO={meeting_scheduled:['Meeting booked','#3ddc84'],callback_requested:['Callback requested','#ffb547'],declined:['Declined','#ff6b6b'],
+const DISPO={meeting_scheduled:['Meeting booked','#3ddc84'],contact_referred:['Owner contact shared','#4fc3f7'],business_closed:['Business closed','#9aa3b6'],callback_requested:['Callback requested','#ffb547'],declined:['Declined','#ff6b6b'],
   not_interested:['Not interested','#ff6b6b'],no_answer:['No answer','#9aa3b6'],dnc_requested:['Do not call','#ff6b6b']};
 const FIXL={nudge_budget:'Nudge budget',use_case:'Purpose',start_language:'Start language',pace_delta:'Pace',simpler:'Wording',note:'Note'};
 function reviewCard(rv,nx){
@@ -433,7 +434,7 @@ function showOutput(d){
       oc.classList.add('show');$('#ocfull').onclick=()=>tab(4);$('#occlose').onclick=()=>oc.classList.remove('show')}}
   $('#p4').innerHTML=`<div class="grid2"><div class="card"><h3>Outcome</h3><span class="badge" style="background:${dc}22;color:${dc};border:1px solid ${dc}66">${esc(dl)}</span>${refresh}
     <div class="kv" style="margin-top:12px"><div>Meeting</div><div>${esc(meet||'—')}</div><div>Summary</div><div>${esc(o.call_summary||'—')}</div>
-    <div>Seller notes</div><div>${esc(o.seller_notes||'—')}</div><div>Use case</div><div>${esc(nice(o.use_case))} · ${esc(o.use_case_confidence)}</div>
+    <div>Seller notes</div><div>${esc(o.seller_notes||'—')}</div>${o.alternate_contact?`<div>Other contact</div><div>${esc(o.alternate_contact)}</div>`:''}<div>Use case</div><div>${esc(nice(o.use_case))} · ${esc(o.use_case_confidence)}</div>
     <div>Persona style</div><div>${esc(nice(o.persona_style))}</div>
     <div>Duration</div><div>${m.duration_in_seconds?fmt(m.duration_in_seconds):'—'} · ${esc(m.language_name||'')} · ended by ${esc(nice(m.ended_by)||'?')}</div>
     <div>Interaction</div><div style="font-family:var(--mono);font-size:12px">${esc(m.interaction_id||'—')}</div><div>Saved</div><div style="font-family:var(--mono);font-size:12px">${esc(d.saved||'')}</div></div></div>

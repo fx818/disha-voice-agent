@@ -42,11 +42,14 @@ def tts_eleven(text, voice, speed, out):
     return dur(out)
 
 
+LANG = "hi-IN"  # Sarvam target language; --lang en-IN for the English script
+
+
 def tts(text, speaker, pace, out):
     if speaker in ELEVEN:
         return tts_eleven(text, speaker, pace, out)
     r = httpx.post("https://api.sarvam.ai/text-to-speech", headers={"api-subscription-key": os.environ["SARVAM_API_KEY"]},
-                   json={"text": text, "target_language_code": "hi-IN", "speaker": speaker, "model": "bulbul:v3",
+                   json={"text": text, "target_language_code": LANG, "speaker": speaker, "model": "bulbul:v3",
                          "pace": pace, "speech_sample_rate": 44100}, timeout=90)
     r.raise_for_status()
     raw = out.with_suffix(".raw.wav")
@@ -61,7 +64,10 @@ def tts(text, speaker, pace, out):
 def main():
     ap = argparse.ArgumentParser(); ap.add_argument("--speaker", default="ritu"); ap.add_argument("--pace", type=float, default=1.05)
     ap.add_argument("--script", default="voiceover_script.json")
+    ap.add_argument("--lang", default="hi-IN", help="Sarvam language: hi-IN (Hinglish) or en-IN")
     a = ap.parse_args()
+    global LANG
+    LANG = a.lang
     doc = json.loads((HERE / a.script).read_text())
     script = doc["scenes"]
     film_sec = float(doc.get("film_sec", FILM_SEC))  # the film's length, from the script

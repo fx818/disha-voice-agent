@@ -135,7 +135,7 @@ const STEPS=[
  {lane:['samvaad'],title:'OnStart builds the persona',clock:'t ≈ 0.7 s',nodes:['onstart','agent'],pk:[['onstart_agent','variables · opening · pace']],
   text:'The persona generator turns the seller\'s history into delivery choices, adjusted for the call purpose. Fixes learned from earlier calls are applied on top. OnStart then sets the opening line, start language and pace. The voice stays the platform voice.',
   list:['use_case, use_case_confidence, use_case_reason','persona_style, seller_history, persona_notes, persona_spec','Nudge budget 0–2 from past calls: warm follow-up and free to paid 2, profile 1, lead engagement and reactivation 0','Learned fixes: start language, pace, simpler wording, notes, purpose, a lower nudge budget','OnStart remembers what it decided (Call 1) so the call can be reviewed later'],
-  code:'opening : "Namaste, main Disha bol rahi\n           hoon IndiaMART se. … se baat\n           ho rahi hai?"\nlanguage: Hindi   pace: 1.40   style: brief_direct'},
+  code:'opening : "Hello sir, main Disha baat kar\n           rahi hoon IndiaMART se. … se baat\n           ho rahi hai?"\nlanguage: Hindi   pace: 1.40   style: brief_direct'},
  {lane:['local','samvaad'],title:'The conversation',clock:'t = 1 s onward',nodes:['console','agent'],pk:[['audio','seller audio'],['audio','Disha audio',1]],
   text:'Disha follows Paayal\'s call flow with the persona variables injected: confirm the seller, give the reason, offer a free executive visit, fix a slot.',
   list:['Audio streams both ways in real time','The console shows live captions and who is speaking','Dates come from call_calendar, never guessed'],

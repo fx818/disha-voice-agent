@@ -22,6 +22,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+from data_prep.load import product_gaps  # noqa: E402
 from generator.generate import seller_row, generate_persona, features, delivery_profile, choose_language, seller_table  # noqa: E402
 
 SEG = ROOT / "outputs" / "segmentation"
@@ -219,6 +220,7 @@ def build_profiles(items: list[tuple[int, str]]) -> list[dict]:
     calls = calls[calls.fk_glusr_usr_id.isin(ids)].sort_values("call_start_time")
     obj = pd.read_parquet(SEG / "work" / "ev_objections.parquet").merge(calls[["attempt_id", "fk_glusr_usr_id"]], on="attempt_id")
     qs = pd.read_parquet(SEG / "work" / "ev_questions.parquet").merge(calls[["attempt_id", "fk_glusr_usr_id"]], on="attempt_id")
+    gaps = product_gaps().set_index("fk_glusr_usr_id")
 
     out = []
     for sid, label in items:
@@ -227,6 +229,11 @@ def build_profiles(items: list[tuple[int, str]]) -> list[dict]:
         p = sel.loc[sid] if sid in sel.index else None
         jev = j01.make_state(p, b.loc[sid], calls[calls.fk_glusr_usr_id == sid],
                              obj[obj.fk_glusr_usr_id == sid], qs[qs.fk_glusr_usr_id == sid], bucket_map, REF_TIME)
+        if sid in gaps.index:  # separate snapshot: its three counts are only quoted together, never mixed with products_listed
+            g = gaps.loc[sid]
+            jev["catalog"]["product_snapshot"] = {"products": int(g.total_product_count),
+                                                  "without_image": int(g.products_without_image),
+                                                  "without_price": int(g.products_without_price)}
         r = rules.loc[sid]
         profile = {"v": 1, "seller_id": sid, "gen": gen, "jev": jev,
                    "rules": {"use_case": r.use_case, "contact_policy": r.contact_policy, "gate_reason": r.reason}}

@@ -25,7 +25,7 @@ FACTS = {
     "purpose": "To set up a short meeting between the seller and an IndiaMART sales executive.",
     "meeting_length": "Under 30 minutes.",
     "meeting_modes": "In person at the seller's location, or over a phone call if the seller prefers.",
-    "meeting_hours": "Executives visit between 11 AM and 5 PM.",
+    "meeting_hours": "Executives visit between 11 AM and 5 PM, Monday to Saturday.",
     "executive_contact": "The executive calls the seller on the seller's registered number before arriving.",
     "meeting_cost": "Only the meeting / consultation itself is free. Plans are explained by the executive, never "
                     "priced on the call. Never say the seller is on a free plan.",
@@ -56,7 +56,9 @@ GUARDRAILS = [
     "Never claim to be human. If asked, say you are IndiaMART's AI assistant, then continue.",
     "Never invent numbers (enquiry counts, buyer names, dates). Use only values supplied by the system.",
     "If the seller asks not to be called again, acknowledge, apologise, say the request will be passed on, and end the call.",
-    "Meetings can only be offered between 11 AM and 5 PM; do not promise other slots.",
+    "Meetings are offered between 11 AM and 5 PM, Monday to Saturday; do not promise other slots. Explain the "
+    "limit once: if the seller keeps asking for another time, do not refuse again; say you will confirm with your "
+    "manager what can be arranged and note it as a pending request, never as confirmed.",
     "At most one reframe after a refusal (none for previously declined or repair calls); at most 2 nudges per call.",
 ]
 

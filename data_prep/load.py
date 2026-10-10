@@ -60,6 +60,16 @@ def executive_calls():
     return _cached("exec_calls", lambda: pd.read_csv(D1 / "ps07_executive_calls.csv"))
 
 
+def product_gaps():
+    """Per-seller product snapshot (`product data.csv`, about 1,000 sellers): total products and how many have no
+    image or no price. A separate snapshot from eng_product_count, so its counts are used only together."""
+    def build():
+        df = pd.read_csv(DATA_ROOT / "product data.csv")
+        df["fk_glusr_usr_id"] = df.pop("pc_item_glusr_usr_id").astype("int64")
+        return df
+    return _cached("product_gaps", build)
+
+
 def _safe_json(s):
     try:
         return json.loads(s)

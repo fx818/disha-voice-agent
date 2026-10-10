@@ -87,7 +87,8 @@ CATALOG_LEVELS = [
     "Almost nothing is set up: the seller is newly registered or has one or two products and no real catalog yet.",
 ]
 CATALOG_INSTR = ("How much work does this seller's IndiaMART catalog need? Compare the products listed and the catalog "
-                 "quality score with the typical seller values given. If catalog data is unknown, judge only from any "
+                 "quality score with the typical seller values given. If a product snapshot is given, many products "
+                 "without a photo or a price also mean more work. If catalog data is unknown, judge only from any "
                  "call history and profile details.")
 REFERENCE = {"typical_seller_products_listed": 12, "typical_seller_catalog_quality_score_out_of_100": 15,
              "typical_seller_buyer_enquiries_last_year": 0}
@@ -148,6 +149,128 @@ USE_CASES = {
         "approach": "Neutral defaults; let live adaptation lead.",
     },
 }
+# Call plan per purpose: the steps of Phase 2 and the seller replies to expect, with example lines (Hindi; said in
+# the language in use, in Disha's own words). From outputs/segmentation/FINAL_SEGMENTATION.md section 4 and
+# C_conversation_evidence.md section 6 (meeting rates of past VANI calls; n and strength are given there).
+CALL_PLANS = {
+    "warm_followup": {
+        "steps": [
+            "Give the reason: the seller's own earlier request or interest, said as the reason for this call.",
+            "Go straight to one concrete slot: 'Kal subah 11 baje ya shaam 4 baje, kaunsa theek rahega?' (a two-slot "
+            "ask booked 32% vs 2-6% for asking for a rough time).",
+        ],
+        "branches": [
+            "Busy again: two new slots once; if neither works, one exact callback day and time, confirm it, close.",
+            "Already met an executive: 'Unse milne ke baad naye enquiries aaye?' then offer a quick follow-up by the "
+            "same executive (about 20% vs 3% for ending the call).",
+            "Says they never asked for a call: apologise in a few words, give the purpose in one line, ask if it is "
+            "useful; never argue.",
+        ],
+        "success": "a confirmed slot (Phase 3 and 4).", "target_sec": 45,
+    },
+    "lead_engagement": {
+        "steps": [
+            "Ask, do not tell: 'Aapko IndiaMART se jo enquiries aa rahi hain, woh aapke kaam ki hoti hain?' Never quote "
+            "an enquiry count (a bare count got 14% vs 28%).",
+            "Listen fully; let them finish their complaint before answering.",
+            "Give the likely cause in one line, then the free fix: 'Profile mein product details adhoori hon to galat "
+            "enquiries aati hain; hamare executive free mein theek kar denge, taaki sahi buyers aayein.'",
+        ],
+        "branches": [
+            "Leads are fake, irrelevant, or sent to 10 sellers: acknowledge in one line, then the cause and the free "
+            "fix (28-35% vs 19% for sympathy alone).",
+            "'Kaunsi enquiry aayi?': say you don't have the enquiry list on this call; the executive will go through "
+            "them with them on the visit.",
+            "Enquiries are fine but no time to reply: the executive can show a quicker way to handle them in the same "
+            "visit.",
+            "'Judkar dekh liya, koi fayda nahi': ask in one question what went wrong, listen, then the cause and the "
+            "free fix.",
+            "Frustrated twice: apologise once, offer that an executive will call at a time they choose, close.",
+        ],
+        "success": "a free profile-fix visit (Phase 3 and 4).", "target_sec": 60,
+    },
+    "free_to_paid": {
+        "steps": [
+            "Value first in one sentence: more buyer enquiries in their category, with a free 15-20 minute meeting "
+            "where the executive explains the options. Frame it as enquiry help, not a sale (22% vs 16%).",
+            "Then the slot ask with two options.",
+        ],
+        "branches": [
+            "'Kitna charge?' or 'paise nahi hain': 'Meeting bilkul free hai; plans aur cost executive aapko samjha "
+            "denge', then the slot ask (50% vs 14%). Never a price.",
+            "'Free mein kya milta hai?': 'Registration aur basic listing free hai', then continue.",
+            "Buying cues (address, kitne baje, aa jaiye): stop pitching and confirm the slot at once (59-82%).",
+            "Never mention a failed payment or 'aapne kharidne ki koshish ki' (4.6% meetings, 61% not interested).",
+        ],
+        "success": "a free meeting with the executive (Phase 3 and 4).", "target_sec": 40,
+    },
+    "reactivation": {
+        "steps": [
+            "No pitch. One warm check-in with the reason in the same breath, so it never sounds nosy: 'IndiaMART par "
+            "aapka account sahi rakhne ke liye bas yeh poochna tha, aapka kaam aajkal kaisa chal raha hai?'",
+            "Listen, then follow the branch that matches the answer; one ask only in the whole call.",
+        ],
+        "branches": [
+            "Running as usual: 'Yeh sunkar achha laga.' Then one offer: a free catalog check so buyer enquiries pick "
+            "up again. Yes: Phase 3. No: thank and close.",
+            "Slow or seasonal: 'Kab tak kaam phir se zor pakdega?' Take the month or date, confirm it back, say "
+            "IndiaMART will call then, close.",
+            "Changed line or new products: 'Ab aap kya bana ya bech rahe hain?' Then offer a free visit to update "
+            "the catalog with the new products: Phase 3.",
+            "Closed, retired or not selling: one line of empathy, then 'Kya aap abhi koi aur kaam kar rahe hain?' If "
+            "no, thank them and close. Never pitch.",
+            "Asks why you want to know, or gets irritated: one short apology and the reason in one line (to keep "
+            "their IndiaMART account accurate, so the right buyers reach them); if still irritated, thank and close.",
+        ],
+        "success": "the business status is known, and a callback date or catalog visit if it fits.", "target_sec": 40,
+    },
+    "profile_onboarding": {
+        "steps": [
+            "The catalog line from the purpose line (their own gap if given), then a soft ask to talk about it.",
+            "If they are open: one line on why it matters, then the free visit: 'Hamare executive free mein aakar "
+            "photos aur details sab set kar denge, aadhe ghante se kam lagega.'",
+        ],
+        "branches": [
+            "'Kaunse products?': you don't have the product-wise list on this call; the executive goes through each "
+            "product on the visit.",
+            "'Photo se kya hota hai?': buyers judge quality and trust from the photo, so they send more enquiries; "
+            "then the visit ask.",
+            "'Hum retail hain' or 'yeh product hamara nahi': that is exactly what the visit fixes; the executive "
+            "corrects the products listed.",
+            "'Main khud kar lunga': fine; the executive can do it all in one visit and show the way too, if they want.",
+            "Cost: the visit is free (52% vs 18%).",
+        ],
+        "success": "a free catalog visit (Phase 3 and 4).", "target_sec": 60,
+    },
+    "discovery": {
+        "steps": [
+            "Confirm what they sell, with the first category from the seller brief: 'Aap mainly <category> ka kaam "
+            "karte hain na?'",
+            "Ask one question: 'IndiaMART se enquiries aa rahi hain?'",
+            "Offer the matching free next step from the answer.",
+        ],
+        "branches": [
+            "No or few enquiries, or the catalog sounds thin: offer the free profile visit (profile_onboarding plan).",
+            "Enquiries come but are not useful: the lead_engagement cause and free fix.",
+            "Wants to grow or asks about plans: the free meeting where the executive explains the options.",
+            "Business slow or closed: the reactivation branches; no pitch.",
+        ],
+        "success": "the right free next step, usually a visit (Phase 3 and 4).", "target_sec": 40,
+    },
+}
+
+
+def call_plan_text(use_case: str) -> str:
+    plan = CALL_PLANS.get(use_case)
+    if not plan:
+        return ""
+    steps = "\n".join(f"{i}. {x}" for i, x in enumerate(plan["steps"], 1))
+    branches = "\n".join(f"- {x}" for x in plan["branches"])
+    return (f"Call plan for {use_case} (Phase 2 follows these steps; example lines are said in the language in use, in "
+            f"your own words; Phases 3 and 4 as usual if it leads to a visit):\n{steps}\nSeller replies:\n{branches}\n"
+            f"Success: {plan['success']} Aim for about {plan['target_sec']} seconds.")
+
+
 # Opening hooks per start language. "evidence" is used only when the profile shows the fact the hook states.
 OPENING_HOOKS = {
     "hi-IN": {
@@ -187,7 +310,7 @@ OPENING_HOOKS = {
 # Openings are one short line: greeting, the caller's name, IndiaMART, one identity question. No pitch and no AI
 # mention in the opening; the purpose line is given in Phase 2 (it is passed to the agent in persona_notes).
 OPENING_PARTS = {
-    "hi-IN": {"me": "Namaste, main Disha bol rahi hoon IndiaMART se.", "who": "{company} se baat ho rahi hai?",
+    "hi-IN": {"me": "Hello sir, main Disha baat kar rahi hoon IndiaMART se.", "who": "{company} se baat ho rahi hai?",
               "who_anon": "Aap IndiaMART seller bol rahe hain?"},
     "en-IN": {"me": "Hello, I'm Disha, calling from IndiaMART.", "who": "Am I speaking with {company}?",
               "who_anon": "Am I speaking with the IndiaMART seller?"},
@@ -212,7 +335,7 @@ OPENING_PARTS = {
     "te-IN": {"me": "Namaskaram, nenu Disha maatladutunnanu IndiaMART nundi.", "who": "{company} tho maatladutunnana?",
               "who_anon": "Meeru IndiaMART seller-aa?"},
 }
-NEUTRAL_OPENING = "Namaste, main Disha bol rahi hoon IndiaMART se. Aap IndiaMART seller bol rahe hain?"
+NEUTRAL_OPENING = "Hello sir, main Disha baat kar rahi hoon IndiaMART se. Aap IndiaMART seller bol rahe hain?"
 TEMPLATE_LANGS = tuple(OPENING_PARTS)  # languages with an opening line (the generator picks only hi/ta/en today)
 PAID_BUCKETS = ("PIM", "PAM", "PANF", "PNCHF", "OLP")
 
@@ -526,10 +649,13 @@ def call_calendar(now: Optional[datetime] = None) -> str:
     now = now.astimezone(IST) if now.tzinfo else now.replace(tzinfo=IST)
     days = [now.date() + timedelta(days=i) for i in range(8)]
     sunday = next(d for d in days if d.weekday() == 6)
+    visit_days = [d for d in days[1:] if d.weekday() != 6][:2]
     return (f"Now: {_day(days[0])}, {now:%H:%M} IST. "
-            + "; ".join(f"{w} = {_day(d)}" for w, d in zip(RELATIVE_DAYS, days)) + ". "
-            + f"Sunday falls on {_day(sunday)}; if a requested day is a Sunday or otherwise not possible, say so and "
-              "ask for another day; never move a date silently.")
+            + "; ".join(f"{w} = {_day(d)}" + (" (Sunday: NO visits)" if d.weekday() == 6 else "")
+                        for w, d in zip(RELATIVE_DAYS, days)) + ". "
+            + f"Next visit days to offer: {_day(visit_days[0])} and {_day(visit_days[1])}, between 11 am and 5 pm. "
+            + f"Sunday falls on {_day(sunday)}: never offer it; if the seller asks for a Sunday or another day that "
+              "is not possible, say so once and ask for another day; never move a date silently.")
 
 
 # ---- persona spec -> Disha inputs --------------------------------------------------------------------------------
@@ -571,11 +697,71 @@ def profile_facts(gen: dict, jstate: dict) -> dict:
     why_txt = " ".join(w for w in why if isinstance(w, str)).lower() if isinstance(why, list) else ""
     paid = (_text(gen.get("ctx_last_bucket")) or "") in PAID_BUCKETS or any(
         w in why_txt for w in ("paid", "package", "buylead", "buy-lead", "buy lead"))
-    return {"callback_requested": bool(callback), "enquiries_received": bool(enquiries), "paid_interest": bool(paid)}
+    prod = product_snapshot(jstate)
+    gaps = bool(prod and (prod["without_image"] or prod["without_price"]))
+    return {"callback_requested": bool(callback), "enquiries_received": bool(enquiries), "paid_interest": bool(paid),
+            "product_gaps": gaps}
 
 
 EVIDENCE_HOOK_FACT = {"warm_followup": "callback_requested", "lead_engagement": "enquiries_received",
-                      "free_to_paid": "paid_interest"}
+                      "free_to_paid": "paid_interest", "profile_onboarding": "product_gaps"}
+
+
+def product_snapshot(jstate: dict) -> Optional[dict]:
+    """The validated product snapshot {products, without_image, without_price}, or None. It is a separate snapshot
+    from products_listed, so its three counts are only ever quoted together."""
+    s = _get_path(jstate, "catalog", "product_snapshot")
+    if not isinstance(s, dict):
+        return None
+    vals = {k: _finite(s.get(k), 0) for k in ("products", "without_image", "without_price")}
+    if any(v is None or v != int(v) for v in vals.values()) or vals["products"] < 1:
+        return None
+    vals = {k: int(v) for k, v in vals.items()}
+    if vals["without_image"] > vals["products"] or vals["without_price"] > vals["products"]:
+        return None
+    return vals
+
+
+def strong_gaps(prod: Optional[dict]) -> bool:
+    """Gaps clear enough to make catalog help the call purpose when nothing else stands out: a quarter or more of
+    the products without a photo, or half or more without a price (median seller: 25% and 100%)."""
+    if not prod:
+        return False
+    return prod["without_image"] / prod["products"] >= 0.25 or prod["without_price"] / prod["products"] >= 0.5
+
+
+# The seller's own catalog gap, named in the purpose line. Photos first (buyers see them first), else prices.
+# Said like someone looking at the seller's catalogue: what she sees, why it matters to buyers, then a soft ask.
+# The free visit comes in the next turn, once the seller is interested.
+GAP_PHRASES = {
+    "hi-IN": {"image": "jinmein se {n} mein photo nahi hai, jo buyers ke liye kaafi important hoti hai",
+              "image_all": "lekin kisi mein bhi photo nahi hai, jo buyers ke liye kaafi important hoti hai",
+              "price": "jinmein se {n} mein price nahi likha hai, jo buyers ke liye kaafi important hota hai",
+              "price_all": "lekin kisi mein bhi price nahi likha hai, jo buyers ke liye kaafi important hota hai",
+              "hook": "Jaisa ki main dekh pa rahi hoon, aapke catalogue mein {total} products hain, {gap}. To kya iske "
+                      "baare mein thodi detail mein baat kar sakte hain?"},
+    "en-IN": {"image": "and {n} of them don't have a photo, which matters a lot to buyers",
+              "image_all": "but none of them has a photo, which matters a lot to buyers",
+              "price": "and {n} of them don't show a price, which matters a lot to buyers",
+              "price_all": "but none of them shows a price, which matters a lot to buyers",
+              "hook": "From what I can see, your catalogue has {total} products, {gap}. Could we talk about this in a "
+                      "little more detail?"},
+    "ta-IN": {"image": "adhula {n}-ku photo illa; buyers-ku adhu romba mukkiyam",
+              "image_all": "aanaa edhukkum photo illa; buyers-ku adhu romba mukkiyam",
+              "price": "adhula {n}-ku price illa; buyers-ku adhu romba mukkiyam",
+              "price_all": "aanaa edhukkum price illa; buyers-ku adhu romba mukkiyam",
+              "hook": "Naan paakkura varaikkum, unga catalogue-la {total} products irukku, {gap}. Idha pathi konjam "
+                      "detail-aa pesalaamaa?"},
+}
+
+
+def gap_hook(lang: str, prod: Optional[dict]) -> Optional[str]:
+    if not prod or not (prod["without_image"] or prod["without_price"]):
+        return None
+    g = GAP_PHRASES.get(lang, GAP_PHRASES["hi-IN"])
+    kind, n = ("image", prod["without_image"]) if prod["without_image"] else ("price", prod["without_price"])
+    gap = g[f"{kind}_all"] if n == prod["products"] else g[kind].format(n=n)
+    return g["hook"].format(total=prod["products"], gap=gap)
 
 
 def seller_history(spec, jstate=None, facts=None) -> tuple[str, str]:
@@ -613,9 +799,13 @@ def _fix(line: str) -> str:
     return line
 
 
-def uc_hook(use_case: str, lang: str, facts: dict) -> tuple[str, bool]:
+def uc_hook(use_case: str, lang: str, facts: dict, prod: Optional[dict] = None) -> tuple[str, bool]:
     hooks = OPENING_HOOKS.get(lang, OPENING_HOOKS["hi-IN"])[use_case]
     fact = EVIDENCE_HOOK_FACT.get(use_case)
+    if use_case == "profile_onboarding" and facts.get("product_gaps"):
+        hook = gap_hook(lang if lang in GAP_PHRASES else "hi-IN", prod)
+        if hook:
+            return hook, True
     if fact and facts.get(fact) and "evidence" in hooks:
         return hooks["evidence"], True
     return hooks["default"], False
@@ -626,7 +816,16 @@ def short_opening(company, lang: str = "hi-IN") -> str:
     return f"{p['me']} {p['who'].format(company=company) if company else p['who_anon']}"
 
 
-def choose_opening(spec, company, use_case, lang="hi-IN", facts=None, policy_block=False) -> tuple[str, str, str]:
+# When the seller asked for a callback, the purpose line starts with it: it is the reason for this call.
+CALLBACK_PREFIX = {
+    "hi-IN": "Pichhli baar aapse baat hui thi, to aapne callback karne ko bola tha, isliye call kiya hai.",
+    "en-IN": "When we spoke last time, you had asked us to call back, so I'm calling now.",
+    "ta-IN": "Pona thadava pesumbodhu neenga thirumbi call panna sonneenga, adhaan call panninen.",
+}
+
+
+def choose_opening(spec, company, use_case, lang="hi-IN", facts=None, policy_block=False,
+                   prod=None) -> tuple[str, str, str]:
     """(line, why, kind). The spoken opening is always one short identity line. `why` carries what Phase 1 and 2
     should do next: the purpose line (only facts on record), and the generator's opening approach (apology for repeat
     calls, referencing a requested callback, AI identity if asked earlier)."""
@@ -636,13 +835,17 @@ def choose_opening(spec, company, use_case, lang="hi-IN", facts=None, policy_blo
         return line, "contact policy blocks a pitch: identity check only, then apologise and close", "contact_policy"
     op = _get_path(spec, "plan", "opening") or {}
     approach = op.get("approach") if isinstance(op.get("approach"), str) else ""
-    hook, _ = uc_hook(use_case, lang, facts)
+    hook_lang = lang if lang in OPENING_HOOKS else "hi-IN"
+    hook, evidence = uc_hook(use_case, hook_lang, facts, prod)
     notes = []
     if approach.startswith("Apologise for repeat calls"):
         notes.append("in the first reply, a short apology for the earlier calls before anything else")
     if approach.startswith("Reference their earlier callback") and facts.get("callback_requested"):
-        notes.append("if it fits naturally, one short phrase that the seller had asked to talk later; drop it at once if the "
-                     "seller says they never asked, and never insist")
+        if not (use_case == "warm_followup" and evidence):  # that hook already says it
+            hook = f"{CALLBACK_PREFIX.get(hook_lang, CALLBACK_PREFIX['hi-IN'])} {hook[:1].upper()}{hook[1:]}"
+        notes.append("the purpose line starts with the seller's callback request, said first as the reason for the call, "
+                     "never added after the pitch; if the seller says they never asked, apologise briefly, drop it and "
+                     "never insist")
     if approach.startswith("Disclose AI identity"):
         notes.append("the seller asked about a bot before: if asked again, answer honestly at once")
     why = (f"short identity opening; purpose line for Phase 2: {hook}"
@@ -650,7 +853,60 @@ def choose_opening(spec, company, use_case, lang="hi-IN", facts=None, policy_blo
     return line, why, "short"
 
 
-def disha_notes(spec, use_case, uc, reason, conf, opening_why, delivery, lang_info, facts, history, policy) -> str:
+def _short(text, n) -> str:
+    t = _text(text) or ""
+    return t if len(t) <= n else t[:n].rsplit(" ", 1)[0] + "…"
+
+
+def seller_brief(gen: dict, jstate: dict, prod: Optional[dict] = None) -> str:
+    """Plain facts about this seller so Disha can speak like someone who looked at their account, not a script.
+    Only values present in the profile; each line says how it may be used."""
+    gen, jstate = gen or {}, jstate or {}
+    lines = []
+    cats = [c for c in (_text(gen.get(f"top_category_{i}")) for i in (1, 2, 3)) if c]
+    place = ", ".join(x for x in (_text(gen.get("seller_locality")), _text(gen.get("seller_city"))) if x)
+    if place and _text(gen.get("seller_locality")) and _text(gen.get("seller_locality")).lower() == \
+            (_text(gen.get("seller_city")) or "").lower():
+        place = _text(gen.get("seller_city"))
+    nob = _text(gen.get("nature_of_business"))
+    if cats:
+        lines.append(f"Sells (top categories, not a product list): {', '.join(cats)}" + (f" ({nob})" if nob else "")
+                     + (f", {place}" if place else "") + ". Name their line of business with these, for example the "
+                     "first one, instead of 'your business'.")
+    if prod:
+        lines.append(f"Products on IndiaMART: {prod['products']}; {prod['without_image']} without a photo, "
+                     f"{prod['without_price']} without a price. Quote these three numbers only together and only "
+                     "about the catalog; never use any other product count. Only the counts are known, not which "
+                     "products: if asked which ones, say you don't have the product-wise list on this call and the "
+                     "executive will go through each product with them on the visit; never name a product or "
+                     "category as missing a photo or price.")
+    cqs = _finite(_get_path(jstate, "catalog", "catalog_quality_score_out_of_100"), 0, 100)
+    if cqs is not None:
+        lines.append(f"Catalog quality score: {int(cqs)} out of 100 (a typical seller has about 15).")
+    bd = _get_path(jstate, "buyer_demand_and_response") or {}
+    enq, rep_ = (_finite(gen.get(k), 0) for k in ("eng_enq_received_90d", "eng_enq_replies_90d"))
+    if enq:
+        lines.append(f"Buyer enquiries in the last 90 days: {int(enq)}" + (f", replied to {int(rep_)}" if rep_ is not None else "")
+                     + ".")
+    elif isinstance(bd, dict) and _finite(bd.get("buyer_enquiries_received_last_year"), 0):
+        lines.append(f"Buyer enquiries in the last year: {int(_finite(bd.get('buyer_enquiries_received_last_year'), 0))}.")
+    calls = _get_path(jstate, "indiamart_call_history", "recent_call_summaries_newest_first")
+    for c in (calls if isinstance(calls, list) else [])[:2]:
+        if isinstance(c, dict) and _text(c.get("summary")):
+            days = _finite(c.get("days_ago"), 0)
+            when = [f"{int(days)} days ago"] if days is not None else []
+            tag = ", ".join(when + [_text(c.get("outcome")) or "outcome unknown"])
+            lines.append(f"Earlier call ({tag}): {_short(c.get('summary'), 220)}")
+    if not lines:
+        return ""
+    return ("Seller brief (speak like a person who has looked at their account: use one or two of these where they "
+            "fit, in your own words; never read them out as a list, never say 'our records' or 'data shows', never "
+            "mention how many times they were called or that they refused before; earlier call notes can be wrong, "
+            "so never quote or argue them):\n" + "\n".join(f"- {x}" for x in lines))
+
+
+def disha_notes(spec, use_case, uc, reason, conf, opening_why, delivery, lang_info, facts, history, policy,
+                brief: str = "") -> str:
     """Everything Disha needs for this seller as compact text for {{persona_notes}}: only final, applied values, each
     choice with its reason and confidence. Sections follow the call phases so the prompt can apply them in order."""
     parts = []
@@ -667,6 +923,8 @@ def disha_notes(spec, use_case, uc, reason, conf, opening_why, delivery, lang_in
     parts += [f"Call purpose: {use_case}. Goal: {uc['goal']}",
               f"Purpose approach: {uc['approach']}",
               f"Why this purpose: {reason} [confidence {conf}]"]
+    if pol not in ("SUPPRESS", "ROUTE_TO_HUMAN") and call_plan_text(use_case):
+        parts.append(call_plan_text(use_case))
     parts.append(f"Delivery: style {delivery['style']}, pace {delivery['pace']} (the voice itself is fixed on the "
                  f"platform). Why: {delivery['why']} [confidence {delivery['confidence']}]")
     parts.append(lang_info["note"])
@@ -675,6 +933,8 @@ def disha_notes(spec, use_case, uc, reason, conf, opening_why, delivery, lang_in
                  "enquiries, interest or past requests as fact; ask instead.")
     if pol in ("SUPPRESS", "ROUTE_TO_HUMAN"):
         return "\n".join(parts)
+    if brief:
+        parts.append(brief)
     if not spec:
         parts.append("No seller data for a persona: base persona, live adaptation leads.")
         return "\n".join(parts)
@@ -885,6 +1145,13 @@ class OnStart(SarvamOnStartTool):
                            if detail["rule_used"] else
                            f" Jev was borderline (plausible: {', '.join(detail['candidates'])}) and the rules' label "
                            f"was not among them, so Jev's label {detail['jev_label']} stands.")
+        prod = product_snapshot(jstate)
+        if use_case == "discovery" and not policy_block and strong_gaps(prod):
+            reason = (f"Product data shows clear catalog gaps ({prod['without_image']} of {prod['products']} products "
+                      f"without a photo, {prod['without_price']} without a price), so the open discovery call becomes "
+                      f"profile help. Before that: {reason}")
+            use_case, source = "profile_onboarding", source + "+product_gaps"
+            conf = "medium" if conf == "high" else conf
         if str(policy or "").startswith("COOL_OFF"):
             reason += " Contact policy COOL_OFF: one soft ask only."
         # fixes learned from this seller's earlier calls (never the contact policy)
@@ -915,14 +1182,16 @@ class OnStart(SarvamOnStartTool):
             lang = {"code": code, "name": LANG_NAME.get(code, code), "switch_ready": [lang["code"]],
                     "note": f"Language: start in {LANG_NAME.get(code, code)} (learned from the last call: {ov['why']}); "
                             f"switch back to {lang['name']} if the seller uses it."}
-        line, opening_why, opening_kind = choose_opening(spec, company, use_case, lang["code"], facts, policy_block)
+        line, opening_why, opening_kind = choose_opening(spec, company, use_case, lang["code"], facts, policy_block,
+                                                         prod)
         history = seller_history(spec, jstate, facts)
         delivery = final_delivery(spec, use_case)
         if ov.get("pace_delta"):
             new = round(min(PACE_MAX, max(PACE_MIN, delivery["pace"] + ov["pace_delta"])), 2)
             ov_applied.append(f"pace {delivery['pace']} -> {new}")
             delivery = dict(delivery, pace=new, why=f"{delivery['why']}; last call review {ov['pace_delta']:+.2f}")
-        notes = disha_notes(spec, use_case, uc, reason, conf, opening_why, delivery, lang, facts, history, (policy, gate))
+        notes = disha_notes(spec, use_case, uc, reason, conf, opening_why, delivery, lang, facts, history, (policy, gate),
+                            seller_brief(gen, jstate, prod))
         nudges, nudge_why = nudge_budget(use_case, policy, history[0], delivery.get("profile_id"), ov.get("nudge_budget"))
         if ov.get("nudge_budget") is not None:
             ov_applied.append(f"nudge budget at most {ov['nudge_budget']}")
@@ -941,7 +1210,7 @@ class OnStart(SarvamOnStartTool):
                         "use_case": {"id": use_case, "confidence": conf, "reason": reason, "source": source,
                                      "decision": detail, "goal": uc["goal"], "approach": uc["approach"]},
                         "contact_policy": {"policy": policy, "gate_reason": gate, "blocks_pitch": policy_block},
-                        "facts_on_record": facts,
+                        "facts_on_record": facts, "product_snapshot": prod,
                         "applied": {"opening_line": line, "opening_kind": opening_kind, "opening_why": opening_why,
                                     "persona_style": delivery["style"], "pace": delivery["pace"],
                                     "delivery_why": delivery["why"], "adjusted_for_purpose": delivery["adjusted"],
