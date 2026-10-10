@@ -18,7 +18,10 @@ and improves with every call. PS04 (seller-fit adaptive voice persona) on the PS
 |---|---|
 | See a persona for a real seller, with the reason for every choice | [`samples/personas/PERSONA_SPECS.md`](samples/personas/PERSONA_SPECS.md) |
 | See switch logs from live calls | [`samples/switch_logs/SWITCH_LOGS.md`](samples/switch_logs/SWITCH_LOGS.md) |
+| See the persona library (5 personas, with evidence) | [`docs/persona_library.md`](docs/persona_library.md) |
 | See the evidence behind the choices | [`docs/evidence_report.md`](docs/evidence_report.md) |
+| See live results (switch accuracy, feedback loop) | [`docs/live_results.md`](docs/live_results.md) |
+| See the A/B test plan | [`docs/ab_test_plan.md`](docs/ab_test_plan.md) |
 | Try Disha myself | [Test Disha on Samvaad](#test-disha-on-samvaad) |
 | Generate a persona | [Generate a persona](#generate-a-persona) |
 | Understand Jev | [Jev: where and why](#jev-where-and-why) |
@@ -33,6 +36,9 @@ and improves with every call. PS04 (seller-fit adaptive voice persona) on the PS
 | Live demo on Sarvam, contrasting sellers, mid-call switch | `Disha Final Demo.mp4` (explainer + Demo 1 + Demo 2) |
 | Switch log (signal, change, reason) | [`samples/switch_logs/`](samples/switch_logs/) · `switch_log_json` on every call |
 | One-slide presentation | [`Disha_One_Slide.pdf`](Disha_One_Slide.pdf) |
+| Persona library with data evidence | [`docs/persona_library.md`](docs/persona_library.md) |
+| Plan for A/B testing against the baseline | [`docs/ab_test_plan.md`](docs/ab_test_plan.md) |
+| Live results: switch accuracy, feedback loop | [`docs/live_results.md`](docs/live_results.md) |
 
 ## How a call works
 
@@ -64,6 +70,8 @@ and improves with every call. PS04 (seller-fit adaptive voice persona) on the PS
 | hangs up fast or has been called many times | **Brisk**: point first, short turns |
 | engaged before or asked for a callback | **Warm & engaged**: upbeat, moves to scheduling |
 | none of the above | **Friendly default** |
+
+- **Distinct in past calls** (all 269k calls, [`docs/persona_library.md`](docs/persona_library.md)): meeting rate 0.2% (calm repair) to 30.6% (friendly default), early hang-ups 2.1% to 46.6%; Cramér's V 0.32 (meetings), 0.41 (early hang-ups); partly by construction
 
 - Then voice and pace, language (start, English mix, formality, switch-ready), tone, opening, personalisation, objection playbook (with past success rates), escalation rules
 - Every choice has a **reason, confidence and evidence id**
@@ -146,6 +154,13 @@ call, from the code tool only.
 - Agreement with rules: 70% (κ 0.64); where they disagree, Jev separates better (0.113 vs 0.101)
 - Sharper groups: Jev profile-help sellers book 20.2% vs 16.0%
 - → Jev first, rules as cross-check and fallback
+
+## Live results
+
+[`docs/live_results.md`](docs/live_results.md) (`tools/analyze_live.py`, team test calls on Samvaad)
+
+- **Switch matching:** 30 logged switches on 53 voice calls; **27/30 (90%) confirmed** by Jev from the transcript (rush 11/11, confusion 4/4, interest 4/4, frustration 1/1, language 7/10)
+- **Feedback loop:** in all 13 repeat-call pairs the next call carried the learned fixes automatically; review scores did **not** improve in these test calls (testers played different scenarios each call), so the lift is to be shown with real sellers ([`docs/ab_test_plan.md`](docs/ab_test_plan.md), arm C)
 
 ## During the call
 
@@ -231,7 +246,8 @@ cp .env.example .env                                     # fill in your keys
 
 ## Known limits
 
-- Evidence is correlational (no past persona experiment)
+- Evidence is correlational (no past persona experiment); the A/B plan measures the real lift
+- Built for **seller** calls (the PS07 data and VANI's calls are seller calls); buyer calls are not covered
 - Voice, pace and tone levels are informed guesses
 - Disha sometimes adapts without calling `persona_switch`; the post-call summary still records it
 - Jev and rules can disagree; the spec says which decided

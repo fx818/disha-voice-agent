@@ -2,6 +2,9 @@
 
 | File | What it is |
 |---|---|
+| [`persona_library.md`](persona_library.md) | The 5 personas side by side: who each fits, tone, pace, language, opening, objection handling, evidence and past outcomes |
+| [`ab_test_plan.md`](ab_test_plan.md) | Plan to test Disha against the current VANI bot: arms, assignment, metrics, sample size, decision rules |
+| [`live_results.md`](live_results.md) | Switch-matching accuracy and feedback-loop results from live test calls |
 | [`evidence_report.md`](evidence_report.md) | The 60 evidence items from 269k past VANI calls that every persona choice points to (E1, E2, ...) |
 | [`segmentation_and_call_plans.md`](segmentation_and_call_plans.md) | How sellers are routed (contact gate, six call purposes) and the persona and call plan per purpose |
 | [`conversation_evidence.md`](conversation_evidence.md) | What sellers say and what works per theme: objections, questions, live cues, openings |
