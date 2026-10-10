@@ -19,6 +19,7 @@ PS07 data pack.
 | See live switch logs from real calls | [`samples/switch_logs/SWITCH_LOGS.md`](samples/switch_logs/SWITCH_LOGS.md) |
 | See the evidence behind the choices | [`docs/evidence_report.md`](docs/evidence_report.md) |
 | Read the generator | [`generator/generate.py`](generator/generate.py) |
+| Understand where and why Jev is used | [Jev: where it is used and why](#jev-where-it-is-used-and-why) |
 | Read what runs on Samvaad | [`samvaad/code_tool/disha_tools_src.py`](samvaad/code_tool/disha_tools_src.py), [`samvaad/disha_prompt.md`](samvaad/disha_prompt.md) |
 
 ## Submission deliverables
@@ -186,6 +187,40 @@ nudge budget, seller brief and opening line.
 
 It writes the real specs to `outputs/personas/` and `outputs/PERSONA_SPECS.md` (local only) and an anonymised copy to
 `samples/personas/`.
+
+## Jev: where it is used and why
+
+Jev (TypeSafe's System One model, `api.typesafe.ai/v1/systemone`) turns a seller's state into typed judgements with
+probabilities: yes/no questions ("Nouls"), scores and choices, each with a probability instead of free text. Disha
+uses it twice per call, always from the code tool, never from the conversation LLM.
+
+| Where | When | What Jev gets | What it returns | What Disha does with it |
+|---|---|---|---|---|
+| **Call purpose** (`OnStart`, `jev_call`) | before the first word | the seller's state: profile, catalog, buyer demand, call history with the last call summaries, objections and questions (`seller_profile.jev`), plus typical-seller reference values | 4 yes/no signals with probabilities (pending commitment, ignores leads, upgrade intent, inactive business) and a catalog-need score from 0 to 3 | picks one of six purposes; when a signal is within the margin of its cut-off, Jev is borderline and the rules decide; confidence is high only when Jev and the rules agree; over 1.5 s or an error → the rules decide |
+| **Switch check and call review** (`OnEnd`, `review_call`) | after hang-up, one request (with fewer than 3 seller turns, only the switch check) | the transcript, the switch log and what OnStart chose | per switch: how strongly the transcript supports the signal (`verified_signal`) and whether the change was applied; for the call: the purpose in hindsight, the seller's language, wanted faster / slower / simpler, irritation from pushing, goal met | writes `switch_log_json` and `call_review`; the review becomes the fix loop's fixes for the seller's next call and, across 2+ sellers, suggested rules |
+
+**Why Jev and not only rules**
+
+- **It reads text the rules cannot.** Call summaries, objections and questions are free text ("seller said call
+  after Diwali", "already met an executive"). Rules only see counts and flags.
+- **Probabilities, not just labels.** Each signal comes with a probability, so Disha knows when the purpose is a
+  close call (borderline → the rules decide, confidence medium) instead of acting on a coin flip.
+- **The same model checks the call afterwards.** Verifying a switch ("does the transcript show the seller was in a
+  rush?") and judging the call in hindsight needs reading a transcript; one Jev request does both.
+- **Fast and cheap enough to run before every call:** median 0.33 s, about 1.6k input and 170 output tokens per
+  seller, 2,100 sellers in 90 s with 0 errors on the validation run.
+- **Easy to change:** the questions are plain-language strings in the code tool (`NOULS`, `CATALOG_LEVELS`), so a
+  purpose can be refined without retraining anything.
+
+**How well it works** ([`docs/jev_validation.md`](docs/jev_validation.md), 2,100 sellers held out, scored against their
+September outcomes): Jev's signals separate outcomes as well as the rules, with a slight lean to Jev (Cramér's V 0.093
+vs 0.089; the difference is not significant). It agrees with the rules for 70% of sellers (κ 0.64), and where they
+disagree, Jev's labels separate outcomes a little better (0.113 vs 0.101, directional). Its groups are sharper: Jev's
+profile-help sellers book 20.2% vs 16.0% for the rules'. That is why the two are combined (Jev first, rules as the
+cross-check and fallback) rather than one replacing the other.
+
+The secret `TYPESAFE_API_KEY` lives in the Samvaad workspace (code tools read it with `context.get_secret`); the
+console's preview records every Jev request and answer so you can see exactly what was asked.
 
 ## During the call
 
