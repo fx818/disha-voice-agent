@@ -18,6 +18,7 @@ PS07 data pack.
 | See a persona for a real seller, with the reason for every choice | [`samples/personas/PERSONA_SPECS.md`](samples/personas/PERSONA_SPECS.md) |
 | See live switch logs from real calls | [`samples/switch_logs/SWITCH_LOGS.md`](samples/switch_logs/SWITCH_LOGS.md) |
 | See the evidence behind the choices | [`docs/evidence_report.md`](docs/evidence_report.md) |
+| Read how we built it (decisions, failures, fixes) | [`skills.md`](skills.md) |
 | Read the generator | [`generator/generate.py`](generator/generate.py) |
 | Understand where and why Jev is used | [Jev: where it is used and why](#jev-where-it-is-used-and-why) |
 | Read what runs on Samvaad | [`samvaad/code_tool/disha_tools_src.py`](samvaad/code_tool/disha_tools_src.py), [`samvaad/disha_prompt.md`](samvaad/disha_prompt.md) |
