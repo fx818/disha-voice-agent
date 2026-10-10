@@ -113,7 +113,8 @@ def region_of(state):
 
 
 TURNOVER_BAND = {"0 - 40 L": "micro", "40 L - 1.5 Cr": "small", "1.5 - 5 Cr": "mid", "5 - 25 Cr": "large",
-                 "25 - 100 Cr": "large", "100 - 500 Cr": "large", "500 Cr & above": "large"}
+                 "25 - 100 Cr": "large", "100 - 500 Cr": "large", "500 Cr & above": "large",
+                 "> 500 Cr": "large"}  # the PS07 data writes the top band as "> 500 Cr"
 
 
 def parse_counts(s):
@@ -670,20 +671,21 @@ def write(spec, out_dir):
 
 def main():
     ap = argparse.ArgumentParser(description="Generate seller persona specs")
-    ap.add_argument("--seller-id")
+    ap.add_argument("--seller-id", help="GLID: builds the seller row from the local PS07 data")
+    ap.add_argument("--row", help="path to a seller-row JSON file (see generator/seller_row.schema.json)")
     ap.add_argument("--sample", action="store_true", help="write specs for the curated sample set")
     ap.add_argument("--out", default=str(OUT / "personas"))
     a = ap.parse_args()
     if a.sample:
         from generator.sample import write_sample
         write_sample(a.out)
-    elif a.seller_id:
-        spec = generate_persona(seller_row(a.seller_id))
+    elif a.seller_id or a.row:
+        spec = generate_persona(json.loads(Path(a.row).read_text()) if a.row else seller_row(a.seller_id))
         print(write(spec, a.out))
         print(json.dumps({k: spec[k] for k in ("delivery_profile", "voice", "language", "tone")}, indent=1,
                          ensure_ascii=False))
     else:
-        ap.error("pass --seller-id or --sample")
+        ap.error("pass --seller-id, --row or --sample")
 
 
 if __name__ == "__main__":

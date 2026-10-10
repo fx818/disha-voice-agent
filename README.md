@@ -102,37 +102,90 @@ changes per seller.
 - **Fixes from the fix loop:** start language, pace, simpler words, fewer nudges, notes. The contact policy is never
   overridden.
 
-### 4. Input to `generate.py`
+### 4. Generate a persona: what to pass
 
-`generate_persona(row)` takes one flat seller row (a dict). `--seller-id N` builds the row from the PS07 data
-(`seller_row()`). Fields read:
+`generate_persona(row)` in `generator/generate.py` takes **one flat seller row** (a JSON object / Python dict) and
+returns the persona spec. There are three ways to call it:
 
-| Field(s) | Used for |
+| You have | Run |
 |---|---|
-| `company` | company name (from past call openings and summaries) |
-| `seller_state`, `seller_city`, `seller_locality` | where the seller is; state sets language and region |
-| `annual_turnover`, `business_type`, `nature_of_business` | size and kind of business |
-| `top_category_1..3`, `top_category_group` | what they sell |
-| `gst_registration_year` | how new the business is |
-| `eng_pickup_ratio_1yr`, `eng_enq_received_90d`, `eng_enq_replies_90d` | engagement with IndiaMART and buyers |
-| `eng_cqs`, `eng_product_count` | catalog quality score and products listed |
-| `bot_answered`, `bot_attempts`, `avg_answered_call_sec` | past VANI bot calls |
-| `calls_meeting_fixed`, `calls_not_interested`, `calls_call_later` | past call outcomes |
-| `ctx_early_calls`, `ctx_last_bucket` | from the call log: hang-ups under 10 s, last call trigger |
-| `past_dispositions_detailed`, `past_objections`, `past_questions_asked` | evaluator outputs from past calls |
-| `asked_if_talking_to_bot`, `showed_frustration`, `already_in_touch_with_executive`, `do_not_call_requested` | flags from past calls |
+| A **GLID** (seller id) and the PS07 data locally | `.venv/bin/python -m generator.generate --seller-id <GLID>` (builds the row from the data with `seller_row()`) |
+| A **seller-row JSON file** (no data needed) | `.venv/bin/python -m generator.generate --row generator/example_seller_row.json` |
+| Python code | `from generator.generate import generate_persona; spec = generate_persona(row_dict)` |
 
-Missing fields are allowed: the affected choices fall back to defaults and are marked low confidence.
+The spec is printed and written to `outputs/personas/<fk_glusr_usr_id>.json` (`--out <dir>` to change).
 
-```bash
-.venv/bin/python -m generator.generate --seller-id <seller_id>   # one seller → outputs/personas/<id>.json
-.venv/bin/python -I tools/export_specs.py [seller ids]          # full specs (needs the console running)
+**Row format:** [`generator/seller_row.schema.json`](generator/seller_row.schema.json) (JSON Schema) and a complete
+synthetic example, [`generator/example_seller_row.json`](generator/example_seller_row.json):
+
+```json
+{
+  "fk_glusr_usr_id": 1000001,
+  "company": "Example LED Traders",
+  "seller_state": "Rajasthan", "seller_city": "Jaipur", "seller_locality": "Malviya Nagar",
+  "annual_turnover": "0 - 40 L",
+  "business_type": "Proprietorship",
+  "nature_of_business": "Trader - Wholesaler/Distributor",
+  "top_category_1": "LED Module", "top_category_2": "Round LED Light", "top_category_3": "LED COB Light",
+  "top_category_group": "Lights, Lighting Fixtures and Components",
+  "gst_registration_year": 2019,
+  "eng_pickup_ratio_1yr": 40, "eng_enq_received_90d": 6, "eng_enq_replies_90d": 1,
+  "eng_cqs": 12, "eng_product_count": 18,
+  "bot_answered": 7, "bot_attempts": 12, "avg_answered_call_sec": 21.5,
+  "calls_meeting_fixed": 0, "calls_not_interested": 0, "calls_call_later": 0,
+  "ctx_early_calls": 4, "ctx_last_bucket": "PIM",
+  "past_dispositions_detailed": "call_dropped (2); general (3)",
+  "past_objections": null,
+  "past_questions_asked": "Clarification (1)",
+  "asked_if_talking_to_bot": 0, "showed_frustration": 0,
+  "already_in_touch_with_executive": 0, "do_not_call_requested": 0
+}
 ```
 
-`tools/export_specs.py` writes the complete spec (generator + OnStart, live Jev) for each seller to
-`outputs/personas/<id>.json` and one readable `outputs/PERSONA_SPECS.md`. The default sample set (seller ids in `DISHA_SPEC_SELLERS` in `.env`) covers five contrasting sellers: free to paid
-(brisk), profile help, warm follow-up in Tamil, reactivation and lead engagement. The main spec is built from the seller data; what the fix loop learned from
-test calls is listed separately per seller.
+This example comes out as the **brisk** persona (4 of 7 answered calls ended within 10 s), Hindi with English
+business words, pace 1.35.
+
+| Field(s) | Type and values | Used for |
+|---|---|---|
+| `fk_glusr_usr_id` | integer (GLID) | the spec's `seller_id` |
+| `company` | string | confirming the business by name |
+| `seller_state`, `seller_city`, `seller_locality` | strings, e.g. `"Uttar Pradesh"` | region and start language |
+| `annual_turnover` | `"0 - 40 L"`, `"40 L - 1.5 Cr"`, `"1.5 - 5 Cr"`, `"5 - 25 Cr"`, `"25 - 100 Cr"`, `"100 - 500 Cr"`, `"> 500 Cr"` | 1.5 Cr and above → consultative |
+| `business_type` | `"Proprietorship"`, `"Partnership"`, `"Limited Company"`, `"Others"` | Limited Company → consultative |
+| `nature_of_business` | e.g. `"Manufacturer"`, `"Trader - Retailer"`, `"Trader - Wholesaler/Distributor"`, `"Service Provider and Others"` | business kind, formality |
+| `top_category_1..3`, `top_category_group` | strings | what they sell, personalisation |
+| `gst_registration_year` | integer | how new the business is |
+| `eng_pickup_ratio_1yr` | 0–100 (percent) | over 50 → engaged |
+| `eng_enq_received_90d`, `eng_enq_replies_90d` | counts | 3+ replies → engaged; enquiry hooks |
+| `eng_cqs`, `eng_product_count` | catalog score 0–100, product count | catalog hooks |
+| `bot_answered`, `bot_attempts` | counts of past VANI bot calls | history, repeat attempts → brisk |
+| `avg_answered_call_sec` | seconds | under 12 → fast hang-up → brisk |
+| `calls_meeting_fixed`, `calls_not_interested`, `calls_call_later` | counts | refusals → calm repair; callbacks → warm |
+| `ctx_early_calls` | count of past calls under 10 s | fast hang-up → brisk |
+| `ctx_last_bucket` | trigger code of the last call, e.g. `"PIM"`, `"PAM"`, `"OLP"`, `"NUR"`, `"SCHD"` | why IndiaMART called; warm & engaged for PAM, NUR, SCHD |
+| `past_dispositions_detailed`, `past_objections`, `past_questions_asked` | `"label (count); label (count)"` | objection playbook and opening |
+| `asked_if_talking_to_bot`, `showed_frustration`, `already_in_touch_with_executive`, `do_not_call_requested` | 0 or 1 | frustration or do-not-call → calm repair |
+
+Every field is optional and may be `null`: missing values fall back to defaults and the affected choices are marked low
+confidence (`{}` gives the friendly default persona). Extra fields are ignored.
+
+**Output:** a JSON spec with `seller_id`, `seller_snapshot`, `delivery_profile`, `voice`, `language`, `tone`, `plan`
+(`opening`, `personalisation`, `objection_playbook`, `escalation_rules`, `target_call_sec`), `guardrails`, `facts`
+and `evidence_refs`. Every choice has a `reason` and a `confidence`. See [`samples/personas/`](samples/personas/).
+
+**On Samvaad** the same generator runs inside Disha's OnStart. There, the one per-call variable `seller_profile` wraps
+this row: `{"v": 1, "seller_id": …, "gen": <seller row>, "jev": <state Jev scores>, "rules": {"use_case",
+"contact_policy", "gate_reason"}}`, built by `tools/export_profiles.py`. OnStart then adds the call purpose, call plan,
+nudge budget, seller brief and opening line.
+
+**Full specs for sample sellers** (generator + OnStart, with live Jev; needs the console running):
+
+```bash
+.venv/bin/python -I tools/export_specs.py [GLID ...]   # or DISHA_SPEC_SELLERS in .env
+```
+
+It writes the real specs to `outputs/personas/` and `outputs/PERSONA_SPECS.md` (local only) and an anonymised copy to
+`samples/personas/`.
 
 ## During the call
 

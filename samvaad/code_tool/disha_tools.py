@@ -152,7 +152,8 @@ def region_of(state):
 
 
 TURNOVER_BAND = {"0 - 40 L": "micro", "40 L - 1.5 Cr": "small", "1.5 - 5 Cr": "mid", "5 - 25 Cr": "large",
-                 "25 - 100 Cr": "large", "100 - 500 Cr": "large", "500 Cr & above": "large"}
+                 "25 - 100 Cr": "large", "100 - 500 Cr": "large", "500 Cr & above": "large",
+                 "> 500 Cr": "large"}  # the PS07 data writes the top band as "> 500 Cr"
 
 
 def parse_counts(s):
