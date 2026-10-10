@@ -539,6 +539,9 @@ class Call:
             return r.json().get("messages") or []
 
     async def fetch_output(self):
+        def ready(v):  # the dashboard default for these outputs is a {"status": "pending"} placeholder
+            return bool(v) and '"pending"' not in str(v)[:60]
+
         # Samvaad publishes the interaction record some time after hang-up (seen: more than 30 s), and OnEnd's Jev
         # check lands a few seconds later still, so wait up to 2 minutes for a record that OnEnd has finished.
         it, t0, seen_log = None, time.time(), None
@@ -548,9 +551,9 @@ class Call:
             except Exception as e:
                 print(f"[console] interaction lookup failed: {type(e).__name__}: {e}")
             av = (it or {}).get("agent_variables") or {}
-            if it and it.get("end_datetime") and av.get("switch_log_json"):
+            if it and it.get("end_datetime") and ready(av.get("switch_log_json")):
                 seen_log = seen_log or time.time()
-                if av.get("call_review") or "call_review" not in av or time.time() - seen_log > 15:
+                if ready(av.get("call_review")) or "call_review" not in av or time.time() - seen_log > 15:
                     break
             self.emit("status", {"text": f"waiting for Samvaad to publish the call record… {int(time.time() - t0)} s",
                                  "phase": "ended"})
@@ -599,7 +602,7 @@ async def review_and_learn(seller: dict, iid: str, out: dict, transcript: list) 
     """Step 1 and 2 after a call: use Samvaad's review (OnEnd) or, if the uploaded code tool predates the review,
     run the same review here; then store it and update this seller's fixes for the next call."""
     review = out.get("call_review") if isinstance(out.get("call_review"), dict) else None
-    if not review or review.get("status") == "unavailable":
+    if not review or review.get("status") in ("unavailable", "pending"):
         turns = [{"i": i, "role": "agent" if m.get("role") == "assistant" else "seller", "text": m.get("content", "")}
                  for i, m in enumerate(transcript or [])]
         if sum(1 for t in turns if t["role"] == "seller") >= T.REVIEW_MIN_SELLER_TURNS:
