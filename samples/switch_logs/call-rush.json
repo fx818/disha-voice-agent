@@ -1,0 +1,36 @@
+{
+ "call": "call-rush",
+ "description": "Lead engagement seller, phone call (no video)",
+ "duration_sec": 92,
+ "call_purpose": "lead_engagement",
+ "outcome": "callback_requested",
+ "switch_log": {
+  "contract_version": 2,
+  "use_case": "lead_engagement",
+  "switches": [
+   {
+    "t_sec": 21.6,
+    "turn_hint": 1,
+    "signal": "rush",
+    "seller_words": "हाँ बताइए सर, जल्दी बताइए।",
+    "change": "dropping pleasantries, moving straight to point",
+    "reason": "User sounds hurried and asked to be quick.",
+    "language_before": "Hindi",
+    "language_after": "Hindi",
+    "requested_language": null,
+    "applied": false,
+    "status": "logged",
+    "verification_status": "verified",
+    "anchor_turn": null,
+    "anchor_method": "whole_transcript",
+    "verified_signal": 0.86,
+    "verified_applied": 0.47
+   }
+  ],
+  "turns": 17,
+  "duration_sec": 92.0,
+  "verification": "done"
+ },
+ "post_call_switch_summary": "rush -> change made -> agent acknowledged the user's busy status and shifted to scheduling a future callback",
+ "call_summary": "The seller was too busy to talk and requested a callback for next week, though they did not specify a particular day or time."
+}

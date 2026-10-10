@@ -4,7 +4,8 @@
 Uses the running Disha Console's preview (the same OnStart code as on Samvaad, live Jev).
 
 Usage: .venv/bin/python -I tools/export_specs.py [seller_id ...]
-Writes outputs/personas/<id>.json and outputs/PERSONA_SPECS.md.
+Writes outputs/personas/<id>.json and outputs/PERSONA_SPECS.md (real seller data, kept out of git), and an anonymised
+copy for the repo in samples/personas/ (company names become "Seller A", "Seller B", ...; seller ids are removed).
 """
 import importlib.util
 import json
@@ -15,9 +16,13 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+try:
+    from dotenv import load_dotenv
+    load_dotenv(ROOT / ".env")
+except ImportError:
+    pass
 OUT = ROOT / "outputs"
 CONSOLE = "http://localhost:7862"
-DEFAULT = [int(x) for x in os.getenv("DISHA_SPEC_SELLERS", "").split(",") if x.strip()]  # sample seller ids, from .env
 
 _spec = importlib.util.spec_from_file_location("disha_tools", ROOT / "samvaad" / "code_tool" / "disha_tools.py")
 T = importlib.util.module_from_spec(_spec)
@@ -142,12 +147,36 @@ def md(s: dict) -> str:
     L += [f"**Fix loop (from earlier test calls with this seller):** "
           + (f"next call would change {ch}." if ch else "no change to the next call.")
           + (f" {fl['learned_notes'].splitlines()[0]}" if fl["learned_notes"] else ""), "",
-          f"**Evidence items:** {', '.join(s['evidence_refs'] or [])} (outputs/evidence_report.md)", ""]
+          f"**Evidence items:** {', '.join(s['evidence_refs'] or [])} (docs/evidence_report.md)", ""]
     return "\n".join(L)
 
 
+SAMPLES = ROOT / "samples" / "personas"
+
+
+def anonymise(specs: list) -> tuple[list, list]:
+    """Replace each seller's company name and id with a neutral label everywhere in its spec."""
+    out, labels = [], []
+    for i, s in enumerate(specs):
+        letter = chr(ord("A") + i)
+        sn = s.get("seller") or {}
+        cats = ", ".join((sn.get("top_categories") or [])[:2]) or "seller"
+        label = f"Seller {letter}"
+        text = json.dumps(s, ensure_ascii=False, default=str)
+        for name in {sn.get("company"), (sn.get("company") or "").upper()} - {None, ""}:
+            text = text.replace(json.dumps(name)[1:-1], label)
+        text = text.replace(s["seller_id"], f"sample-{letter.lower()}")
+        a = json.loads(text)
+        a["seller_id"] = f"sample-{letter.lower()}"
+        out.append(a)
+        labels.append((label, f"sample-{letter.lower()}", cats, a["call_purpose"]["use_case"]))
+    return out, labels
+
+
 def main():
-    ids = [int(x) for x in sys.argv[1:]] or DEFAULT
+    ids = [int(x) for x in sys.argv[1:]] or [int(x) for x in os.getenv("DISHA_SPEC_SELLERS", "").split(",") if x.strip()]
+    if not ids:
+        sys.exit("give seller ids, or set DISHA_SPEC_SELLERS in .env")
     (OUT / "personas").mkdir(parents=True, exist_ok=True)
     specs = []
     for sid in ids:
@@ -160,7 +189,7 @@ def main():
             "One spec per seller, built by the same code that runs on Samvaad before Disha's first word: the persona "
             "generator (generator/generate.py) plus the call purpose from Jev, the purpose-adjusted delivery, the nudge "
             "budget, the call plan and any fixes from the fix loop. Every choice carries its reason and confidence; "
-            "evidence ids refer to outputs/evidence_report.md. Voice gender, pace and tone levels are informed guesses "
+            "evidence ids refer to docs/evidence_report.md. Voice gender, pace and tone levels are informed guesses "
             "(no past call varied them) and are marked low confidence; live switching corrects them during the call.", "",
             "## Input: what generate.py reads", "",
             "`generate_persona(row)` takes one flat seller row (a dict). `--seller-id N` builds it from the PS07 data "
@@ -170,6 +199,16 @@ def main():
     head += ["", "Missing fields are allowed: the affected choices fall back to defaults and are marked low confidence.", ""]
     (OUT / "PERSONA_SPECS.md").write_text("\n".join(head + [md(s) for s in specs]))
     print(f"wrote {OUT / 'PERSONA_SPECS.md'} and {len(specs)} JSON specs in {OUT / 'personas'}")
+    anon, labels = anonymise(specs)
+    SAMPLES.mkdir(parents=True, exist_ok=True)
+    for a in anon:
+        (SAMPLES / f"{a['seller_id']}.json").write_text(json.dumps(a, indent=1, ensure_ascii=False, default=str))
+    idx = ["", "## Sellers in this set", "", "| Seller | Sells | Call purpose | JSON |", "|---|---|---|---|"]
+    idx += [f"| {l} | {c} | {u} | [{f}.json]({f}.json) |" for l, f, c, u in labels]
+    note = ["", "Company names and seller ids are replaced (Seller A, B, ...); everything else is exactly what Disha "
+            "builds for that seller.", ""]
+    (SAMPLES / "PERSONA_SPECS.md").write_text("\n".join(head[:2] + note + idx + [""] + head[2:] + [md(a) for a in anon]))
+    print(f"wrote the anonymised copy in {SAMPLES}")
 
 
 if __name__ == "__main__":

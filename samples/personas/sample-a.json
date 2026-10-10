@@ -1,0 +1,217 @@
+{
+ "seller_id": "sample-a",
+ "seller": {
+  "company": "Seller A",
+  "city": "Jaipur",
+  "state": "Rajasthan",
+  "locality": null,
+  "business_type": "Proprietorship",
+  "turnover": "0 - 40 L",
+  "nature": "Trader - Wholesaler/Distributor",
+  "top_categories": [
+   "LED Module",
+   "Round LED Light",
+   "LED COB Light"
+  ],
+  "segment": "Hindi belt micro wholesaler · brisk",
+  "history": {
+   "bot_answered": 7,
+   "meetings": 0,
+   "not_interested": 0,
+   "call_later": 0,
+   "early_drops": 2,
+   "avg_answered_sec": 33.6,
+   "flags": []
+  },
+  "missing_fields": []
+ },
+ "contact_policy": "OK_TO_CALL",
+ "call_purpose": {
+  "use_case": "free_to_paid",
+  "confidence": "high",
+  "reason": "Jev signals: upgrade intent 0.61, inactive business 0.13, pending commitment 0.10; catalog need 1.05 of 3. Rules say free_to_paid (agree)."
+ },
+ "delivery_profile": {
+  "id": "brisk",
+  "label": "Brisk: hook in the first sentence, fast pace, short turns"
+ },
+ "voice": {
+  "speaker": "neha",
+  "gender": "female",
+  "pace": 1.35,
+  "temperature": 0.5,
+  "reason": "Speaker 'neha': female voice, as in all past VANI calls (keeps continuity; no data compares genders). Pace 1.35: history of quick hang-ups / many attempts: early drops 50% vs 25% for others so faster delivery. Expressiveness 0.5 to match the brisk profile.",
+  "confidence": "medium",
+  "note": "the platform voice is fixed (female); only pace changes per seller",
+  "final_pace": 1.4
+ },
+ "final_delivery": {
+  "style": "brief_direct",
+  "pace": 1.4,
+  "reason": "style brief_direct, pace 1.4 (the voice itself is fixed on the platform). Why: persona brisk: Pace 1.35: history of quick hang-ups / many attempts: early drops 50% vs 25% for others so faster delivery. Expressiveness 0.5 to match the brisk profile.; call purpose free_to_paid adjusts pace by +0.05 because free to paid sellers hang up fastest (25.6% early drop on the Sept holdout): a little quicker [confidence medium]"
+ },
+ "language": {
+  "language_code": "hi-IN",
+  "english_mix": 0.26,
+  "formality": "casual",
+  "reason": "Rajasthan is Hindi-speaking; 99% of 848 transcribed calls were in Hindi. English mix 26%: based on the English-word share sellers in Hindi_belt used. Formality 'casual': micro trader who hangs up fast; plain everyday Hindi, still 'aap'.",
+  "confidence": "high",
+  "switch_ready": [
+   "en-IN"
+  ]
+ },
+ "start_language": "Hindi",
+ "tone": {
+  "warmth": "medium",
+  "empathy": "medium",
+  "energy": "neutral",
+  "reason": "Seller drops calls fast: respectful but business-like; warmth shown by brevity, not chit-chat. (Tone levels are an informed guess; the data has no labelled tone.)",
+  "confidence": "low"
+ },
+ "opening_line": "Hello sir, main Disha baat kar rahi hoon IndiaMART se. Seller A se baat ho rahi hai?",
+ "conversation_plan": {
+  "opening_approach": {
+   "approach": "Hook-first one-liner, ask for two minutes, skip pleasantries.",
+   "example_line": "Namaste, IndiaMART se Vani. Jaipur mein aapki category ke buyers ke liye ek chhoti si baat thi, kya Seller A se do minute baat ho sakti hai?",
+   "reason": "Fast hang-ups / repeat attempts: put the value hook in the first sentence. Most drops happen at the opening (29% of calls dropped) and a cut-off pitch halves meetings (9% of pitches cut off).",
+   "confidence": "high"
+  },
+  "call_plan": "Call plan for free_to_paid (Phase 2 follows these steps; example lines are said in the language in use, in your own words; Phases 3 and 4 as usual if it leads to a visit):\n1. Value first in one sentence: more buyer enquiries in their category, with a free 15-20 minute meeting where the executive explains the options. Frame it as enquiry help, not a sale (22% vs 16%).\n2. Then the slot ask with two options.\nSeller replies:\n- 'Kitna charge?' or 'paise nahi hain': 'Meeting bilkul free hai; plans aur cost executive aapko samjha denge', then the slot ask (50% vs 14%). Never a price.\n- 'Free mein kya milta hai?': 'Registration aur basic listing free hai', then continue.\n- Buying cues (address, kitne baje, aa jaiye): stop pitching and confirm the slot at once (59-82%).\n- Never mention a failed payment or 'aapne kharidne ki koshish ki' (4.6% meetings, 61% not interested).\nSuccess: a free meeting with the executive (Phase 3 and 4). Aim for about 40 seconds.",
+  "personalisation": [
+   {
+    "hook": "Confirm the business by name: 'Seller A'",
+    "reason": "Name taken from past call openings/summaries; confirms the right contact."
+   },
+   {
+    "hook": "Buyer enquiries for LED Module in Jaipur",
+    "reason": "Seller's top category and city from the seller file; the enquiry hook is the standard VANI value line."
+   },
+   {
+    "hook": "They received 3 enquiries in the last 90 days and replied to 3",
+    "reason": "Engagement data; enquiry responders convert better (9.9% vs 8.3%). Use the number only as supplied."
+   },
+   {
+    "hook": "Catalogue quality score is 15/100 — the executive can help improve it",
+    "reason": "Low catalogue score from engagement data; profile improvement is a common VANI hook."
+   },
+   {
+    "hook": "The seller was recently checking buy leads on IndiaMART.",
+    "reason": "Lead bucket PUA on the latest call; states why IndiaMART is calling."
+   }
+  ],
+  "objection_playbook": [
+   {
+    "objection": "Seller Unavailability & Scheduling Constraints",
+    "approach": "Don't re-pitch. Offer two concrete slots (tomorrow 12 / 4 PM) in one sentence; else book a callback.",
+    "reason": "22% of objections from Hindi_belt sellers",
+    "evidence": "E26: meeting rate after this objection 5.7%"
+   },
+   {
+    "objection": "Callback / Deferred Engagement (Neutral)",
+    "approach": "Lock an exact callback day and time; confirm it back in one line.",
+    "reason": "20% of objections from Hindi_belt sellers",
+    "evidence": "E27: meeting rate after this objection 5.7%"
+   },
+   {
+    "objection": "Explicit Disinterest / Refusal",
+    "approach": "Ask one clarifying 'what would make it useful?' question; on second refusal close politely.",
+    "reason": "11% of objections from Hindi_belt sellers",
+    "evidence": "E30: meeting rate after this objection 2.3%"
+   },
+   {
+    "objection": "Existing Engagement / Past Experience",
+    "approach": "Acknowledge their executive / past meeting; position this visit as a follow-up on the profile; if they had a bad experience, apologise and offer to route the complaint, no pitch.",
+    "reason": "6% of objections from Hindi_belt sellers",
+    "evidence": "E32: meeting rate after this objection 4.9%"
+   },
+   {
+    "objection": "Pricing question",
+    "approach": "Do not quote any price; say the executive will explain plans in the meeting; return to scheduling.",
+    "reason": "Real bots quoted inconsistent prices; pricing is a guardrailed fact.",
+    "evidence": "fixed_script.GUARDRAILS"
+   },
+   {
+    "objection": "'Are you a bot?'",
+    "approach": "Answer honestly: 'Main IndiaMART ki AI assistant hoon' and continue with the purpose.",
+    "reason": "Sellers do ask; past bot answers often denied being AI (compliance risk).",
+    "evidence": "E35"
+   }
+  ],
+  "escalation_rules": [
+   {
+    "trigger": "Two consecutive 1-2 word replies or a 'busy' cue",
+    "action": "Offer two concrete slots in one line; if neither works, take a callback time, confirm, close.",
+    "reason": "Short replies predict the call ending soon (32% vs 26%)."
+   },
+   {
+    "trigger": "Seller asks not to be called again",
+    "action": "Acknowledge, apologise, say the request will be passed on, close immediately.",
+    "reason": "Compliance guardrail; DNC sellers convert at 2.0%."
+   },
+   {
+    "trigger": "Second clear refusal (first if previously declined or a repair call)",
+    "action": "At most one reframe after the first refusal, 2 nudges per call; then thank and close.",
+    "reason": "Prior not-interested sellers rarely convert (4.3%); pushing risks frustration."
+   },
+   {
+    "trigger": "Frustration detected twice (keywords or repeated barge-in)",
+    "action": "Apologise once, offer a callback at their chosen time, close.",
+    "reason": "After a frustration turn the call ends within 2 turns 42% of the time vs 26%."
+   },
+   {
+    "trigger": "Seller asks for a human / the executive",
+    "action": "Offer the executive's call-back at a time they pick; book it as the outcome.",
+    "reason": "Keeps the meeting goal while respecting the request."
+   },
+   {
+    "trigger": "Same pitch would be repeated",
+    "action": "Never repeat a line verbatim; rephrase in fewer words or move to the scheduling question.",
+    "reason": "Informed guess: repetition annoys callers. The data cannot test it fairly: calls the evaluator flagged as repetitive are long calls, which convert more for that reason alone."
+   },
+   {
+    "trigger": "Call placed between 11:00 and 13:00",
+    "action": "Offer an afternoon slot or callback early in the call.",
+    "reason": "Late-morning calls convert at 7.1% vs 13.0% (busiest trading hours)."
+   }
+  ],
+  "target_call_sec": 45
+ },
+ "nudge_budget": {
+  "value": "2",
+  "reason": "2 nudges after a refusal in this call. Why: free to paid: 1st nudge 5.5% (n=488), 2nd 4.5% (n=111), irritation under 3%."
+ },
+ "fix_loop": {
+  "changes_next_call": {
+   "pace": {
+    "from": 1.4,
+    "to": 1.6
+   }
+  },
+  "learned_notes": "Learned from earlier calls with this seller (call 10/14:44: the seller wanted a faster, shorter call; call 10/14:44: the seller was confused by what Disha meant; approved rule: Sellers were confused by Disha's wording in 10 of 16 reviewed calls.):"
+ },
+ "evidence_refs": [
+  "E2",
+  "E4",
+  "E5",
+  "E19",
+  "E22",
+  "E26",
+  "E27",
+  "E30",
+  "E32",
+  "E39",
+  "E47",
+  "E51",
+  "E56",
+  "E60"
+ ],
+ "guardrails": [
+  "Personas change delivery only (voice, pace, language, tone, order, length), never facts, pricing or compliance statements.",
+  "Never quote prices, plan fees, discounts or guarantees; say the sales executive will explain pricing.",
+  "Never claim to be human. If asked, say you are IndiaMART's AI assistant, then continue.",
+  "Never invent numbers (enquiry counts, buyer names, dates). Use only values supplied by the system.",
+  "If the seller asks not to be called again, acknowledge, apologise, say the request will be passed on, and end the call.",
+  "Meetings are offered between 11 AM and 5 PM, Monday to Saturday; do not promise other slots. Explain the limit once: if the seller keeps asking for another time, do not refuse again; say you will confirm with your manager what can be arranged and note it as a pending request, never as confirmed.",
+  "At most one reframe after a refusal (none for previously declined or repair calls); at most 2 nudges per call."
+ ]
+}

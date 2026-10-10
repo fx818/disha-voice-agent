@@ -1,0 +1,17 @@
+{
+ "call": "demo-2",
+ "description": "Demo 2 in the video: profile help (Seller B in the persona samples)",
+ "duration_sec": 77,
+ "call_purpose": "profile_onboarding",
+ "outcome": "meeting_scheduled",
+ "switch_log": {
+  "contract_version": 2,
+  "use_case": "profile_onboarding",
+  "switches": [],
+  "turns": 13,
+  "duration_sec": 77.0,
+  "verification": "done"
+ },
+ "post_call_switch_summary": "none",
+ "call_summary": "The agent contacted the seller from the seller's company to offer free profile enrichment for their Acrylic Paints catalogue, and a meeting was scheduled."
+}

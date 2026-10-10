@@ -11,19 +11,29 @@ PS07 data pack.
 - **Conversation:** Sarvam on Samvaad: speech recognition, the conversation LLM and the voice.
 - **Persona:** evidence-based rules (`generator/generate.py`), so every choice can be traced to past calls.
 
+## Start here
+
+| I want to… | Open |
+|---|---|
+| See a persona for a real seller, with the reason for every choice | [`samples/personas/PERSONA_SPECS.md`](samples/personas/PERSONA_SPECS.md) |
+| See live switch logs from real calls | [`samples/switch_logs/SWITCH_LOGS.md`](samples/switch_logs/SWITCH_LOGS.md) |
+| See the evidence behind the choices | [`docs/evidence_report.md`](docs/evidence_report.md) |
+| Read the generator | [`generator/generate.py`](generator/generate.py) |
+| Read what runs on Samvaad | [`samvaad/code_tool/disha_tools_src.py`](samvaad/code_tool/disha_tools_src.py), [`samvaad/disha_prompt.md`](samvaad/disha_prompt.md) |
+
 ## Submission deliverables
 
 | Deliverable | Where |
 |---|---|
 | Persona generator running on sample seller files | `generator/generate.py` (also bundled into the Samvaad code tool and run before every call) |
-| Persona spec per sample seller, with the reason for each choice | `outputs/PERSONA_SPECS.md` + `outputs/personas/<seller_id>.json` (generated locally, see below) |
+| Persona spec per sample seller, with the reason for each choice | [`samples/personas/`](samples/personas/) (anonymised; the real specs are generated locally to `outputs/`) |
 | Live demo on Sarvam, contrasting sellers, mid-call switch | `Disha Final Demo.mp4` (explainer + Demo 1 + Demo 2) |
-| Switch log: signal, change, reason for every switch | `switch_log_json` on every call (OnEnd), shown on the console's switch timeline |
+| Switch log: signal, change, reason for every switch | [`samples/switch_logs/`](samples/switch_logs/); written on every call as `switch_log_json` and shown on the console's switch timeline |
 | One-slide presentation | Claude artifact "Disha One-Slide Summary" (export to PDF/PPTX from its Share menu) |
 
 ## How a call works
 
-1. **Sort the sellers** (offline, `outputs/segmentation/`): a contact gate (SUPPRESS: do not call;
+1. **Sort the sellers** (offline, `outputs/segmentation/scripts/`, see [`docs/segmentation_and_call_plans.md`](docs/segmentation_and_call_plans.md)): a contact gate (SUPPRESS: do not call;
    ROUTE_TO_HUMAN: executive only; COOL_OFF: one soft ask; OK_TO_CALL), then a rules-based call purpose.
 2. **Prepare the seller file**: one compact `seller_profile` JSON per seller (about 3 KB), the only per-call input.
 3. **Start the call** from the Disha Console (browser or phone) or the Samvaad dashboard.
@@ -39,7 +49,7 @@ PS07 data pack.
 ### 1. Evidence from past calls (offline, once)
 
 269,455 answered VANI calls (April to September 2026), their evaluator outputs and 139k transcript turns were analysed
-into **60 evidence items** (`outputs/evidence.json`, readable in `outputs/evidence_report.md`), each with a sample size,
+into **60 evidence items** (`outputs/evidence.json`, readable in [`docs/evidence_report.md`](docs/evidence_report.md)), each with a sample size,
 a baseline and a strength (strong, moderate, weak). All findings are correlational. Examples:
 
 - Sellers who hung up within 10 s before hang up early again 50% of the time vs 25% → short, fast opening.
@@ -47,7 +57,7 @@ a baseline and a strength (strong, moderate, weak). All findings are correlation
 - Sellers spoke Hindi in 97–100% of transcribed calls in every state with enough calls; Tamil Nadu is the exception
   (72% Tamil) → start language by state.
 
-Per-purpose evidence and call plans: `outputs/segmentation/FINAL_SEGMENTATION.md` and `C_conversation_evidence.md`.
+Per-purpose evidence and call plans: [`docs/segmentation_and_call_plans.md`](docs/segmentation_and_call_plans.md) and [`docs/conversation_evidence.md`](docs/conversation_evidence.md).
 
 ### 2. The generator (`generator/generate.py`, no LLM)
 
@@ -177,20 +187,28 @@ voice). Final cut: the explainer with the ElevenLabs voice, a 1.8 s "Demo 1" car
 
 ## Layout
 
+```
+README.md
+samples/              persona specs and switch logs for sample sellers (anonymised)  ← start here
+docs/                 evidence report, segmentation and call plans, conversation evidence, Jev validation
+generator/            persona generator (evidence-based rules) and the fixed script (facts, guardrails)
+samvaad/              Disha's prompt and the Samvaad code tool (OnStart, persona_switch, OnEnd) with tests
+  prompt_history/     earlier prompt versions
+ui/                   Disha Console (seller list, preview, browser and phone calls, outputs, Insights, Flow)
+tools/                build the code tool, export seller files, pick test sellers, export persona specs
+data_prep/            data loaders (PS07 files, product data)
+outputs/              local outputs; only the analysis and video scripts are in git
+  segmentation/scripts/   data analysis and segmentation scripts
+  video/              voice-over build and mix scripts
+legacy/               earlier versions (v1 Pipecat agent, Samvaad v1), not used by Disha
+```
+
 | Path | What it is |
 |---|---|
-| `generator/` | Persona generator (evidence-backed delivery, language, tone, plan) |
-| `samvaad/code_tool/disha_tools_src.py` | Samvaad code tool source (OnStart, PersonaSwitch, OnEnd) |
-| `samvaad/code_tool/test_disha_offline.py`, `test_disha_tools.py` | Offline tests and live (Jev) tests |
 | `tools/build_code_tool.py` | Builds the single uploadable `samvaad/code_tool/disha_tools.py` |
 | `tools/export_profiles.py` | Builds `seller_profile` JSON from the data (plus product data) |
 | `tools/export_product_sellers.py` | Picks good test sellers from the product data (`--verify` checks them with live Jev) |
-| `tools/export_specs.py` | Exports the full persona specs for sample sellers |
-| `samvaad/disha_prompt.md` | Disha's prompt (earlier versions kept as `disha_prompt_before_*.md`) |
-| `ui/` | Disha Console |
-| `data_prep/` | Data loaders (PS07 files, product data) |
-| `outputs/segmentation/scripts/` | Data analysis and segmentation scripts |
-| `outputs/video/` | Voice-over build and mix scripts |
+| `tools/export_specs.py` | Exports the full persona specs (real to `outputs/`, anonymised to `samples/personas/`) |
 
 ## Run
 

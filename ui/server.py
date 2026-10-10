@@ -41,7 +41,7 @@ from sarvam_conv_ai_sdk.messages.types import InteractionType, Role, UserIdentif
 
 import learning  # noqa: E402
 import samvaad_mcp  # noqa: E402
-from agent.events import bus  # noqa: E402
+from events import bus  # noqa: E402  (ui/events.py)
 from sarvam_conv_ai_sdk.audio_interface import AsyncAudioInterface  # noqa: E402
 
 APP_ID = os.getenv("DISHA_APP_ID", "Disha---Ind-85eb0f30-d809")

@@ -1,0 +1,17 @@
+{
+ "call": "demo-1",
+ "description": "Demo 1 in the video: free to paid, brisk seller (Seller A in the persona samples)",
+ "duration_sec": 104,
+ "call_purpose": "free_to_paid",
+ "outcome": "callback_requested",
+ "switch_log": {
+  "contract_version": 2,
+  "use_case": "free_to_paid",
+  "switches": [],
+  "turns": 15,
+  "duration_sec": 104.0,
+  "verification": "done"
+ },
+ "post_call_switch_summary": "language switch -> change made to Bengali -> user spoke in Bengali",
+ "call_summary": "The agent spoke with the business owner and then their sales executive; the executive requested a callback today at 5 PM to schedule the meeting."
+}
