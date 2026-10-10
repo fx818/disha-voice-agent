@@ -11,6 +11,10 @@ PS07 data pack.
 - **Conversation:** Sarvam on Samvaad: speech recognition, the conversation LLM and the voice.
 - **Persona:** evidence-based rules (`generator/generate.py`), so every choice can be traced to past calls.
 
+![Disha one-slide summary](Disha_One_Slide.png)
+
+One-slide summary: [`Disha_One_Slide.pdf`](Disha_One_Slide.pdf) · [`Disha_One_Slide.png`](Disha_One_Slide.png)
+
 ## Start here
 
 | I want to… | Open |
@@ -30,7 +34,7 @@ PS07 data pack.
 | Persona spec per sample seller, with the reason for each choice | [`samples/personas/`](samples/personas/) (anonymised; the real specs are generated locally to `outputs/`) |
 | Live demo on Sarvam, contrasting sellers, mid-call switch | `Disha Final Demo.mp4` (explainer + Demo 1 + Demo 2) |
 | Switch log: signal, change, reason for every switch | [`samples/switch_logs/`](samples/switch_logs/); written on every call as `switch_log_json` and shown on the console's switch timeline |
-| One-slide presentation | Claude artifact "Disha One-Slide Summary" (export to PDF/PPTX from its Share menu) |
+| One-slide presentation | [`Disha_One_Slide.pdf`](Disha_One_Slide.pdf) / [`Disha_One_Slide.png`](Disha_One_Slide.png) (shown at the top of this README) |
 
 ## How a call works
 
@@ -277,6 +281,7 @@ voice). Final cut: the explainer with the ElevenLabs voice, a 1.8 s "Demo 1" car
 
 ```
 README.md
+Disha_One_Slide.pdf / .png   the one-slide summary
 samples/              persona specs and switch logs for sample sellers (anonymised)  ← start here
 docs/                 evidence report, segmentation and call plans, conversation evidence, Jev validation
 generator/            persona generator (evidence-based rules) and the fixed script (facts, guardrails)
